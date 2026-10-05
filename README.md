@@ -1,3 +1,39 @@
+# CAE Engineering Hub — Claude UI/UX Refinement Concepts
+
+Six independent UI/UX exploration directions created with UI/UX Pro Max.
+
+Repository:
+https://github.com/ayay2270/CAE-Engineering-Hub
+
+Branch:
+https://github.com/ayay2270/CAE-Engineering-Hub/tree/concepts/claude-uiux-refinement-r1
+
+## Preview
+
+| Concept | Direction | Preview |
+| --- | --- | --- |
+| Gallery | Compare all six concepts | [Open Gallery](https://raw.githack.com/ayay2270/CAE-Engineering-Hub/concepts/claude-uiux-refinement-r1/concepts/index.html) |
+| A | Premium Engineering Portal | [Open Concept A](https://raw.githack.com/ayay2270/CAE-Engineering-Hub/concepts/claude-uiux-refinement-r1/concepts/concept-a/index.html) |
+| B | Immersive CAE Studio | [Open Concept B](https://raw.githack.com/ayay2270/CAE-Engineering-Hub/concepts/claude-uiux-refinement-r1/concepts/concept-b/index.html) |
+| C | Task-based Engineering Hub | [Open Concept C](https://raw.githack.com/ayay2270/CAE-Engineering-Hub/concepts/claude-uiux-refinement-r1/concepts/concept-c/index.html) |
+| D | Modular Engineering Cockpit | [Open Concept D](https://raw.githack.com/ayay2270/CAE-Engineering-Hub/concepts/claude-uiux-refinement-r1/concepts/concept-d/index.html) |
+| E | Knowledge + Tool Hybrid | [Open Concept E](https://raw.githack.com/ayay2270/CAE-Engineering-Hub/concepts/claude-uiux-refinement-r1/concepts/concept-e/index.html) |
+| F | Claude Free Exploration | [Open Concept F](https://raw.githack.com/ayay2270/CAE-Engineering-Hub/concepts/claude-uiux-refinement-r1/concepts/concept-f/index.html) |
+
+The links open the rendered pages through [raw.githack.com](https://raw.githack.com). On the first visit it may show a one-time "One more step" notice; choose **Open the page**. Each concept reads the live `data/tools.json` and opens the seven tools in a new tab. Branch-based previews can be cached for a few minutes after a new push.
+
+## Notes
+
+- These concepts are branch-only exploration work.
+- Production `main` is unchanged.
+- No concept has been merged into `main`.
+- Everything new lives in [`concepts/`](https://github.com/ayay2270/CAE-Engineering-Hub/tree/concepts/claude-uiux-refinement-r1/concepts); design notes are in [`concepts/README.md`](https://github.com/ayay2270/CAE-Engineering-Hub/blob/concepts/claude-uiux-refinement-r1/concepts/README.md).
+
+---
+
+<details>
+<summary>Production README (unchanged from <code>main</code>)</summary>
+
 # CAE Engineering Hub
 
 A lightweight local launcher for independent CAE tools. Plain HTML, CSS, JavaScript modules, and JSON; no framework, packages, build step, or application backend.
@@ -97,3 +133,5 @@ CAE-Engineering-Hub/
 ```
 
 No existing CAE repository is included, imported, or modified. Each application remains independent; the launcher contains no GitHub automation or repository synchronization.
+
+</details>
