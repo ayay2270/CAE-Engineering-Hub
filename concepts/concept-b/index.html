@@ -1,0 +1,73 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="theme-color" content="#0f1216">
+  <meta name="color-scheme" content="dark">
+  <title>Concept B · Immersive CAE Studio · CAE Engineering Hub</title>
+  <link rel="icon" href="../../assets/icons/hub.svg" type="image/svg+xml">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=IBM+Plex+Sans:wght@400;500;600&family=IBM+Plex+Mono:wght@400;500;600&display=swap">
+  <link rel="stylesheet" href="../shared/base.css">
+  <link rel="stylesheet" href="b.css">
+  <script src="../shared/hub.js" defer></script>
+  <script src="../shared/plates.js" defer></script>
+  <script src="b.js" defer></script>
+</head>
+<body>
+  <a class="skip-link" href="#tree">Skip to tool tree</a>
+
+  <header class="bar">
+    <a class="brand" href="./" aria-label="CAE Engineering Hub, concept B home"><span id="brand-mark"></span><span class="brand-name">CAE Engineering Hub</span><span class="brand-tag">Studio</span></a>
+    <nav class="crumbs" aria-label="Current selection"><ol id="crumbs"></ol></nav>
+    <div class="search">
+      <span class="search-ico" id="search-ico"></span>
+      <label class="sr-only" for="q">Filter tools</label>
+      <input id="q" type="search" placeholder="Filter tools" autocomplete="off" spellcheck="false">
+      <kbd aria-hidden="true">/</kbd>
+    </div>
+    <a class="concepts-link" href="../">All concepts</a>
+  </header>
+
+  <div class="shell">
+    <aside class="pane tree-pane" aria-labelledby="tree-title">
+      <div class="pane-head"><h2 id="tree-title">Tool tree</h2><span class="pane-meta" id="tree-count" role="status" aria-live="polite"></span></div>
+      <div class="tree" id="tree"></div>
+      <div class="tree-empty" id="tree-empty" hidden>
+        <p>No tools match this filter.</p>
+        <button type="button" class="link-btn" id="tree-reset">Clear filter</button>
+      </div>
+      <div class="pane-foot">
+        <p class="foot-title">Status</p>
+        <ul class="legend-status">
+          <li><span class="st active"></span>Active</li>
+          <li><span class="st preview"></span>Preview</li>
+          <li><span class="st dev"></span>In Development</li>
+        </ul>
+      </div>
+    </aside>
+
+    <main class="stage" id="main">
+      <section class="viewport" id="viewport" aria-labelledby="vp-title">
+        <div class="vp-head">
+          <p class="vp-label"><span class="vp-dot" aria-hidden="true"></span><span id="vp-title">Overview</span></p>
+          <div class="vp-nav">
+            <button type="button" class="vp-btn" id="prev" aria-label="Previous tool"></button>
+            <button type="button" class="vp-btn" id="next" aria-label="Next tool"></button>
+          </div>
+        </div>
+        <div class="vp-canvas" id="vp-canvas"></div>
+        <svg class="triad" viewBox="0 0 64 64" aria-hidden="true">
+          <path d="M14 50H52" stroke="#e5675e"/><path d="M14 50V12" stroke="#69b86b"/><path d="M14 50 2 60" stroke="#6aa5f2" opacity=".9"/>
+          <text x="55" y="53" fill="#e5675e">X</text><text x="10" y="9" fill="#69b86b">Y</text><text x="0" y="56" fill="#6aa5f2" dy="8">Z</text>
+        </svg>
+      </section>
+      <div class="filmstrip" id="filmstrip" aria-label="All tools, visual"></div>
+    </main>
+
+    <aside class="pane props" id="props" aria-labelledby="props-title"></aside>
+  </div>
+</body>
+</html>

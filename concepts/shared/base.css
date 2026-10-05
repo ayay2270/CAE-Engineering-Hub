@@ -1,0 +1,43 @@
+/* Shared reset, accessibility helpers and plate styling for the concept prototypes. */
+*, *::before, *::after { box-sizing: border-box; }
+html { -webkit-text-size-adjust: 100%; text-size-adjust: 100%; }
+body { margin: 0; -webkit-font-smoothing: antialiased; }
+h1, h2, h3, h4, p, ul, ol, dl, dd, figure { margin: 0; }
+ul, ol { padding: 0; list-style: none; }
+img, svg { display: block; }
+button, input, select { font: inherit; color: inherit; letter-spacing: inherit; }
+button { cursor: pointer; background: none; border: 0; padding: 0; touch-action: manipulation; }
+a { color: inherit; touch-action: manipulation; }
+input[type="search"]::-webkit-search-cancel-button { -webkit-appearance: none; }
+[hidden] { display: none !important; }
+
+.sr-only { position: absolute; width: 1px; height: 1px; padding: 0; margin: -1px; overflow: hidden; clip: rect(0 0 0 0); white-space: nowrap; border: 0; }
+.skip-link { position: fixed; left: 16px; top: -100px; z-index: 1000; padding: 12px 18px; border-radius: 8px; background: #fff; color: #111; font-weight: 600; text-decoration: none; box-shadow: 0 6px 24px #0003; }
+.skip-link:focus { top: 12px; }
+
+.ico { width: 20px; height: 20px; flex-shrink: 0; fill: none; stroke: currentColor; stroke-width: 1.6; stroke-linecap: round; stroke-linejoin: round; }
+.cg-mark { width: 28px; height: 28px; flex-shrink: 0; }
+
+/* Plates. Each concept sets the custom properties. */
+.plate { width: 100%; height: auto; display: block; overflow: visible; }
+.plate .pl-grid { fill: none; stroke: var(--pl-grid, rgba(20, 40, 60, .08)); stroke-width: .6; }
+.plate .pl-ink { fill: none; stroke: var(--pl-ink, #22303e); stroke-width: 1.5; stroke-linecap: round; stroke-linejoin: round; }
+.plate .pl-bold { stroke-width: 2.6; }
+.plate .pl-thin { fill: none; stroke: var(--pl-ink, #22303e); stroke-width: .9; stroke-linecap: round; opacity: .6; }
+.plate .pl-dash { stroke-dasharray: 3 3.5; }
+.plate .pl-acc { fill: none; stroke: var(--pl-acc, #c2571a); stroke-width: 2.4; stroke-linecap: round; stroke-linejoin: round; }
+.plate .pl-accfill { fill: var(--pl-acc, #c2571a); stroke: none; }
+.plate .pl-soft { fill: var(--pl-soft, rgba(194, 87, 26, .12)); stroke: none; }
+.plate .pl-soft-ink { fill: var(--pl-soft-ink, rgba(34, 48, 62, .16)); stroke: var(--pl-ink, #22303e); stroke-width: 1.2; }
+.plate .pl-page { fill: var(--pl-bg, #fff); stroke: var(--pl-ink, #22303e); stroke-width: 1.5; stroke-linejoin: round; }
+.plate .pl-page-fill { fill: var(--pl-bg, #fff); stroke: none; }
+.plate .pl-cg { fill: var(--pl-bg, #fff); }
+.plate .pl-txt { fill: var(--pl-txt, var(--pl-ink, #22303e)); font-family: var(--pl-font, Georgia, "Times New Roman", serif); font-style: italic; font-size: 14px; }
+.plate .pl-big { font-size: 20px; }
+.plate .pl-mono { fill: var(--pl-txt, var(--pl-ink, #22303e)); font-family: var(--pl-mono, ui-monospace, "Cascadia Mono", Consolas, monospace); font-size: 8.5px; font-weight: 600; letter-spacing: .06em; }
+.plate .pl-icon .ico { stroke: var(--pl-ink, #22303e); }
+.plate .pl-icon path, .plate .pl-icon rect, .plate .pl-icon circle { fill: none; stroke: var(--pl-ink, #22303e); stroke-width: .8; }
+
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after { animation-duration: .01ms !important; animation-iteration-count: 1 !important; transition-duration: .01ms !important; scroll-behavior: auto !important; }
+}

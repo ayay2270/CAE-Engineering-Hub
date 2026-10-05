@@ -1,0 +1,75 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="theme-color" content="#f4f3ef">
+  <title>Concept A · Premium Engineering Portal · CAE Engineering Hub</title>
+  <link rel="icon" href="../../assets/icons/hub.svg" type="image/svg+xml">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Hanken+Grotesk:wght@400;500;600;700&family=IBM+Plex+Mono:wght@400;500&family=Newsreader:ital,opsz,wght@0,6..72,400;0,6..72,500;1,6..72,400&display=swap">
+  <link rel="stylesheet" href="../shared/base.css">
+  <link rel="stylesheet" href="a.css">
+  <script src="../shared/hub.js" defer></script>
+  <script src="../shared/plates.js" defer></script>
+  <script src="a.js" defer></script>
+</head>
+<body>
+  <a class="skip-link" href="#index">Skip to tool index</a>
+
+  <header class="mast" id="mast">
+    <div class="mast-inner">
+      <a class="brand" href="./" aria-label="CAE Engineering Hub, concept A home"><span class="brand-mark" id="brand-mark"></span><span class="brand-name">CAE Engineering Hub</span></a>
+      <nav class="mast-nav" aria-label="Page sections">
+        <a href="#featured">Featured</a>
+        <a href="#index">Index</a>
+      </nav>
+      <div class="search">
+        <span class="search-ico" id="search-ico"></span>
+        <label class="sr-only" for="q">Search tools</label>
+        <input id="q" type="search" placeholder="Search tools, tags, categories" autocomplete="off" spellcheck="false">
+        <kbd aria-hidden="true">/</kbd>
+      </div>
+      <a class="concepts-link" href="../">All concepts</a>
+    </div>
+  </header>
+
+  <main>
+    <section class="lead" id="featured" aria-labelledby="lead-title">
+      <div class="lead-copy">
+        <p class="kicker">Personal CAE launchpad</p>
+        <h1 id="lead-title">CAE Engineering Hub</h1>
+        <p class="lede">Independent tools for reference, calculation, model checks and project data. Each opens in its own tab.</p>
+        <p class="kicker kicker-sub">Browse by category</p>
+        <ul class="lead-cats" id="lead-cats"></ul>
+      </div>
+      <div class="featured" id="featured-grid" aria-label="Featured tools"></div>
+    </section>
+
+    <section class="index" id="index" aria-labelledby="index-title" tabindex="-1">
+      <div class="index-head">
+        <div class="index-title-row">
+          <h2 id="index-title">Index</h2>
+          <p class="count" id="count" role="status" aria-live="polite" aria-atomic="true">Loading tools…</p>
+        </div>
+        <div class="filters">
+          <div class="cat-tabs" id="cat-tabs" role="group" aria-label="Filter by category"></div>
+          <div class="status-filter" id="status-filter" role="group" aria-label="Filter by status"></div>
+        </div>
+      </div>
+      <div class="index-list" id="index-list" aria-busy="true"></div>
+      <div class="empty" id="empty" hidden>
+        <p class="empty-title">No tools match</p>
+        <p class="empty-text" id="empty-text"></p>
+        <button class="btn-quiet" type="button" id="empty-reset">Clear search and filters</button>
+      </div>
+    </section>
+  </main>
+
+  <footer class="foot">
+    <span>CAE Engineering Hub · Concept A</span>
+    <span>Tools open in a new tab · Source: data/tools.json</span>
+  </footer>
+</body>
+</html>

@@ -1,0 +1,72 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="theme-color" content="#e4e2dc">
+  <title>Concept D · Modular Engineering Cockpit · CAE Engineering Hub</title>
+  <link rel="icon" href="../../assets/icons/hub.svg" type="image/svg+xml">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Archivo:wdth,wght@75..100,400..700&family=JetBrains+Mono:wght@400;500;600&display=swap">
+  <link rel="stylesheet" href="../shared/base.css">
+  <link rel="stylesheet" href="d.css">
+  <script src="../shared/hub.js" defer></script>
+  <script src="../shared/plates.js" defer></script>
+  <script src="d.js" defer></script>
+</head>
+<body>
+  <a class="skip-link" href="#launch-input">Skip to launcher</a>
+
+  <header class="top">
+    <a class="brand" href="./" aria-label="CAE Engineering Hub, concept D home"><span id="brand-mark"></span><span class="brand-name">CAE Engineering Hub</span><span class="brand-sub">Cockpit</span></a>
+    <p class="keys" aria-hidden="true"><kbd>/</kbd> find <kbd>↑</kbd><kbd>↓</kbd> choose <kbd>↵</kbd> open <kbd>P</kbd> pin</p>
+    <a class="concepts-link" href="../">All concepts</a>
+  </header>
+
+  <main class="deck" id="main">
+    <section class="mod mod-launch" aria-labelledby="m-launch">
+      <h2 class="mod-label" id="m-launch"><span class="mod-no">01</span>Launch</h2>
+      <div class="launch-field">
+        <span class="launch-ico" id="launch-ico"></span>
+        <label class="sr-only" for="launch-input">Find a tool</label>
+        <input id="launch-input" type="search" placeholder="Find a tool" autocomplete="off" spellcheck="false" aria-controls="launch-list" aria-describedby="launch-help">
+        <span class="launch-filter" id="launch-filter" hidden></span>
+      </div>
+      <p class="sr-only" id="launch-help">Arrow keys choose a tool, Enter opens it in a new tab.</p>
+      <ul class="launch-list" id="launch-list" aria-label="Tools"></ul>
+      <div class="launch-empty" id="launch-empty" hidden>
+        <p>No tool matches.</p>
+        <button type="button" id="launch-reset">Clear search and filters</button>
+      </div>
+      <p class="sr-only" id="announce" role="status" aria-live="polite" aria-atomic="true"></p>
+    </section>
+
+    <section class="mod mod-selected" aria-labelledby="m-selected">
+      <h2 class="mod-label" id="m-selected"><span class="mod-no">02</span>Selected</h2>
+      <div class="selected" id="selected"></div>
+    </section>
+
+    <div class="stack">
+      <section class="mod mod-pinned" aria-labelledby="m-pinned">
+        <h2 class="mod-label" id="m-pinned"><span class="mod-no">03</span>Pinned</h2>
+        <div id="pinned"></div>
+      </section>
+      <section class="mod mod-recent" aria-labelledby="m-recent">
+        <h2 class="mod-label" id="m-recent"><span class="mod-no">04</span>Recently opened</h2>
+        <div id="recent"></div>
+      </section>
+    </div>
+
+    <section class="mod mod-cats" aria-labelledby="m-cats">
+      <h2 class="mod-label" id="m-cats"><span class="mod-no">05</span>Categories</h2>
+      <div class="switches" id="cats" role="group" aria-labelledby="m-cats"></div>
+    </section>
+
+    <section class="mod mod-status" aria-labelledby="m-status">
+      <h2 class="mod-label" id="m-status"><span class="mod-no">06</span>Status</h2>
+      <div class="switches switches-status" id="statuses" role="group" aria-labelledby="m-status"></div>
+    </section>
+  </main>
+</body>
+</html>

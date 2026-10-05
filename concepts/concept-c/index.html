@@ -1,0 +1,55 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="theme-color" content="#f7f6f2">
+  <title>Concept C · Task-Based Engineering Hub · CAE Engineering Hub</title>
+  <link rel="icon" href="../../assets/icons/hub.svg" type="image/svg+xml">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Schibsted+Grotesk:ital,wght@0,400;0,500;0,600;0,700;1,400&display=swap">
+  <link rel="stylesheet" href="../shared/base.css">
+  <link rel="stylesheet" href="c.css">
+  <script src="../shared/hub.js" defer></script>
+  <script src="../shared/plates.js" defer></script>
+  <script src="c.js" defer></script>
+</head>
+<body>
+  <a class="skip-link" href="#answers">Skip to tools</a>
+
+  <header class="top">
+    <a class="brand" href="./" aria-label="CAE Engineering Hub, concept C home"><span id="brand-mark"></span><span>CAE Engineering Hub</span></a>
+    <a class="concepts-link" href="../">All concepts</a>
+  </header>
+
+  <div class="layout">
+    <aside class="intent" aria-label="Choose a task">
+      <p class="intent-lead" id="intent-lead">I need to…</p>
+      <div class="search">
+        <span class="search-ico" id="search-ico"></span>
+        <label class="sr-only" for="q">Describe the task or search tools</label>
+        <input id="q" type="search" placeholder="e.g. velocity, mesh, steel, weight" autocomplete="off" spellcheck="false" aria-describedby="intent-lead">
+        <kbd aria-hidden="true">/</kbd>
+      </div>
+      <nav aria-label="Tasks">
+        <ul class="verbs" id="verbs"></ul>
+      </nav>
+      <p class="intent-note">Tasks follow the tool categories. Each tool opens in its own tab.</p>
+    </aside>
+
+    <main class="answers" id="answers" tabindex="-1" aria-labelledby="answers-title">
+      <div class="answers-head">
+        <h1 id="answers-title">Every task</h1>
+        <p class="count" id="count" role="status" aria-live="polite" aria-atomic="true"></p>
+      </div>
+      <div id="tasks"></div>
+      <div class="empty" id="empty" hidden>
+        <h2>No task or tool matches “<span id="empty-q"></span>”</h2>
+        <p>Try a simpler word, such as one of these:</p>
+        <div class="suggest" id="suggest"></div>
+      </div>
+    </main>
+  </div>
+</body>
+</html>

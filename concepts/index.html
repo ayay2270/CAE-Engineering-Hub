@@ -1,0 +1,188 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="theme-color" content="#f4f3ef">
+  <title>UI/UX Concepts · CAE Engineering Hub</title>
+  <link rel="icon" href="../assets/icons/hub.svg" type="image/svg+xml">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Hanken+Grotesk:wght@400;500;600;700&family=IBM+Plex+Mono:wght@400;500&display=swap">
+  <link rel="stylesheet" href="shared/base.css">
+  <style>
+    :root { --paper: #f4f3ef; --card: #fbfaf8; --ink: #141a22; --ink-2: #3c4552; --muted: #5d6673; --rule: #dad7ce; --ease: cubic-bezier(.2, .7, .2, 1);
+      --sans: "Hanken Grotesk", "Segoe UI", system-ui, sans-serif; --mono: "IBM Plex Mono", ui-monospace, Consolas, monospace; }
+    body { background: var(--paper); color: var(--ink); font-family: var(--sans); font-size: 16px; line-height: 1.5; }
+    :focus-visible { outline: 2px solid #1f4e8c; outline-offset: 3px; border-radius: 4px; }
+    .wrap { max-width: 1280px; margin: 0 auto; padding: 0 48px; }
+    header.top { display: flex; align-items: center; justify-content: space-between; gap: 16px; height: 64px; border-bottom: 1px solid var(--rule); }
+    .brand { display: flex; align-items: center; gap: 10px; font-weight: 650; text-decoration: none; }
+    .brand .cg-mark { width: 24px; height: 24px; }
+    .prod { font-size: 14px; color: var(--ink-2); text-decoration: none; display: inline-flex; align-items: center; gap: 8px; }
+    .prod:hover { color: var(--ink); text-decoration: underline; text-underline-offset: 3px; }
+    .prod .ico { width: 16px; height: 16px; }
+    .intro { padding: 48px 0 32px; display: grid; grid-template-columns: minmax(0, 1fr) auto; gap: 32px; align-items: end; }
+    .kicker { font: 500 11.5px var(--mono); letter-spacing: .14em; text-transform: uppercase; color: var(--muted); }
+    h1 { font-size: 40px; font-weight: 650; letter-spacing: -.025em; line-height: 1.1; margin-top: 12px; }
+    .intro p.lede { margin-top: 12px; color: var(--ink-2); font-size: 17px; max-width: 64ch; }
+    .meta { font: 500 12px var(--mono); color: var(--muted); text-align: right; line-height: 1.8; }
+    .grid { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 24px; padding-bottom: 64px; }
+    .card { position: relative; display: flex; flex-direction: column; background: var(--card); border-radius: 12px; box-shadow: 0 0 0 1px var(--rule); overflow: hidden; transition: box-shadow .25s var(--ease), transform .25s var(--ease); }
+    .card:hover { box-shadow: 0 0 0 1px #b9b4a7, 0 14px 32px -18px rgba(20, 25, 35, .3); transform: translateY(-2px); }
+    .thumb { aspect-ratio: 16 / 10; background: #ebe9e3; border-bottom: 1px solid var(--rule); }
+    .thumb svg { width: 100%; height: 100%; }
+    .body { padding: 18px 20px 20px; display: flex; flex-direction: column; gap: 8px; flex: 1; }
+    .label { display: flex; align-items: baseline; gap: 12px; }
+    .letter { font: 500 13px var(--mono); color: var(--muted); }
+    .card h2 { font-size: 20px; font-weight: 650; letter-spacing: -.012em; line-height: 1.25; }
+    .card p { color: var(--ink-2); font-size: 15px; line-height: 1.55; flex: 1; }
+    .open { align-self: flex-start; margin-top: 8px; display: inline-flex; align-items: center; gap: 10px; min-height: 40px; padding: 0 16px; border-radius: 20px; border: 1px solid var(--ink); font-size: 14px; font-weight: 600; text-decoration: none; transition: background .2s, color .2s; }
+    .open .ico { width: 16px; height: 16px; transition: transform .25s var(--ease); }
+    .open::after { content: ""; position: absolute; inset: 0; }
+    .card:hover .open { background: var(--ink); color: #fff; }
+    .card:hover .open .ico { transform: translateX(3px); }
+    footer { border-top: 1px solid var(--rule); padding: 20px 0 36px; font: 500 12px var(--mono); color: var(--muted); display: flex; justify-content: space-between; gap: 16px; flex-wrap: wrap; }
+    footer a { color: inherit; }
+    @media (max-width: 1080px) { .grid { grid-template-columns: repeat(2, minmax(0, 1fr)); } }
+    @media (max-width: 720px) {
+      .wrap { padding: 0 16px; }
+      .intro { grid-template-columns: 1fr; padding-top: 32px; }
+      .meta { text-align: left; }
+      h1 { font-size: 30px; }
+      .grid { grid-template-columns: 1fr; gap: 16px; }
+    }
+  </style>
+</head>
+<body>
+  <a class="skip-link" href="#concepts">Skip to concepts</a>
+  <div class="wrap">
+    <header class="top">
+      <a class="brand" href="./"><svg class="cg-mark" viewBox="0 0 32 32" aria-hidden="true"><circle cx="16" cy="16" r="13" fill="none" stroke="currentColor" stroke-width="2"/><path d="M16 16V3a13 13 0 0 1 13 13Z" fill="currentColor"/><path d="M16 16v13A13 13 0 0 1 3 16Z" fill="currentColor"/></svg>CAE Engineering Hub</a>
+      <a class="prod" href="../">Current production Hub <svg class="ico" viewBox="0 0 24 24" aria-hidden="true"><path d="M4 12h15m-5-5 5 5-5 5"/></svg></a>
+    </header>
+
+    <section class="intro" aria-labelledby="title">
+      <div>
+        <p class="kicker">UI/UX refinement · round 1 · Claude study</p>
+        <h1 id="title">Six concepts for the Hub</h1>
+        <p class="lede">The same seven tools, categories and statuses in six different directions. Every prototype reads the live registry (data/tools.json) and opens tools in a new tab.</p>
+      </div>
+      <p class="meta">Branch concepts/claude-uiux-refinement-r1<br>Production files unchanged</p>
+    </section>
+
+    <main id="concepts" class="grid" aria-label="Concepts">
+      <article class="card">
+        <div class="thumb"><svg viewBox="0 0 320 200" aria-hidden="true">
+          <rect width="320" height="200" fill="#f4f3ef"/><rect x="0" y="0" width="320" height="14" fill="#fbfaf8"/><circle cx="14" cy="7" r="3.5" fill="#141a22"/><rect x="210" y="4" width="80" height="6" rx="3" fill="#dad7ce"/>
+          <rect x="16" y="30" width="34" height="3" fill="#8a929c"/><rect x="16" y="40" width="70" height="9" fill="#141a22"/><rect x="16" y="53" width="56" height="9" fill="#141a22"/><rect x="16" y="70" width="80" height="3" fill="#8a929c"/><rect x="16" y="76" width="70" height="3" fill="#8a929c"/>
+          <g fill="#dad7ce"><rect x="16" y="92" width="86" height="1"/><rect x="16" y="100" width="86" height="1"/><rect x="16" y="108" width="86" height="1"/><rect x="16" y="116" width="86" height="1"/></g>
+          <rect x="118" y="28" width="110" height="82" rx="3" fill="#13233a"/><path d="M132 92C150 90 152 46 168 44S190 92 214 92" stroke="#e3a64b" stroke-width="1.6" fill="none"/>
+          <rect x="236" y="28" width="68" height="36" rx="3" fill="#13233a"/><rect x="236" y="74" width="68" height="36" rx="3" fill="#13233a"/>
+          <rect x="0" y="128" width="320" height="72" fill="#fbfaf8"/><rect x="16" y="138" width="40" height="7" fill="#141a22"/>
+          <g fill="#13233a"><rect x="96" y="152" width="34" height="20" rx="2"/><rect x="96" y="178" width="34" height="20" rx="2"/></g>
+          <g fill="#c7c3b8"><rect x="140" y="156" width="90" height="4"/><rect x="140" y="164" width="120" height="3"/><rect x="140" y="182" width="80" height="4"/><rect x="140" y="190" width="110" height="3"/></g>
+          <g fill="none" stroke="#141a22"><rect x="276" y="156" width="30" height="10" rx="5"/><rect x="276" y="182" width="30" height="10" rx="5"/></g>
+        </svg></div>
+        <div class="body">
+          <div class="label"><span class="letter">A</span><h2>Premium Engineering Portal</h2></div>
+          <p>Editorial calm: a featured spread on navy plate tiles, then a numbered index grouped by category.</p>
+          <a class="open" href="concept-a/">Open concept <svg class="ico" viewBox="0 0 24 24" aria-hidden="true"><path d="M4 12h15m-5-5 5 5-5 5"/></svg></a>
+        </div>
+      </article>
+
+      <article class="card">
+        <div class="thumb"><svg viewBox="0 0 320 200" aria-hidden="true">
+          <defs><radialGradient id="g-b" cx="50%" cy="0%" r="110%"><stop offset="0" stop-color="#3d4b5d"/><stop offset=".5" stop-color="#26303c"/><stop offset="1" stop-color="#141a21"/></radialGradient></defs>
+          <rect width="320" height="200" fill="#0e1115"/><rect x="0" y="0" width="320" height="12" fill="#0e1115"/><circle cx="10" cy="6" r="3" fill="#ffb547"/>
+          <rect x="0" y="12" width="64" height="188" fill="#151a20"/><g fill="#3a4350"><rect x="8" y="24" width="40" height="3"/><rect x="14" y="33" width="36" height="3"/><rect x="8" y="46" width="40" height="3"/><rect x="14" y="55" width="36" height="3"/><rect x="8" y="68" width="40" height="3"/><rect x="14" y="77" width="36" height="3"/><rect x="14" y="86" width="36" height="3"/></g>
+          <rect x="10" y="74" width="48" height="10" rx="2" fill="#23446e" opacity=".9"/>
+          <rect x="64" y="12" width="186" height="150" fill="url(#g-b)"/>
+          <defs><linearGradient id="g-fr" gradientUnits="userSpaceOnUse" x1="0" y1="64" x2="0" y2="110"><stop offset="0" stop-color="#d7301f"/><stop offset=".1" stop-color="#d7301f"/><stop offset=".1" stop-color="#f4a52a"/><stop offset=".2" stop-color="#f4a52a"/><stop offset=".2" stop-color="#9fd04c"/><stop offset=".31" stop-color="#9fd04c"/><stop offset=".31" stop-color="#35b2c6"/><stop offset=".42" stop-color="#35b2c6"/><stop offset=".42" stop-color="#3150b7"/><stop offset=".58" stop-color="#3150b7"/><stop offset=".58" stop-color="#35b2c6"/><stop offset=".69" stop-color="#35b2c6"/><stop offset=".69" stop-color="#9fd04c"/><stop offset=".8" stop-color="#9fd04c"/><stop offset=".8" stop-color="#f4a52a"/><stop offset=".9" stop-color="#f4a52a"/><stop offset=".9" stop-color="#ee6a2b"/><stop offset="1" stop-color="#ee6a2b"/></linearGradient></defs>
+          <path d="M112 64L210 74A13 13 0 0 1 210 100L112 110Z" fill="url(#g-fr)"/><rect x="98" y="50" width="14" height="74" fill="#3a86d1"/><path d="M98 50H112V64L210 74A13 13 0 0 1 210 100L112 110V124H98Z" fill="none" stroke="#0a0e14" stroke-width=".8"/><circle cx="212" cy="87" r="5" fill="#2b3542"/><path d="M95 50V124" stroke="#e8edf3" stroke-width="1.4"/>
+          <rect x="64" y="162" width="186" height="38" fill="#151a20"/><g fill="#2c3746"><rect x="70" y="168" width="38" height="26" rx="2"/><rect x="114" y="168" width="38" height="26" rx="2"/><rect x="158" y="168" width="38" height="26" rx="2"/><rect x="202" y="168" width="38" height="26" rx="2"/></g>
+          <rect x="250" y="12" width="70" height="188" fill="#151a20"/><rect x="258" y="26" width="50" height="6" fill="#e7ebf0"/><g fill="#3a4350"><rect x="258" y="38" width="54" height="3"/><rect x="258" y="44" width="46" height="3"/></g><rect x="258" y="56" width="54" height="12" rx="2" fill="#1f6fd6"/>
+        </svg></div>
+        <div class="body">
+          <div class="label"><span class="letter">B</span><h2>Immersive CAE Studio</h2></div>
+          <p>The Hub as a pre/post-processor: tool tree, a viewport with an element-wise fringe plot, and a properties panel.</p>
+          <a class="open" href="concept-b/">Open concept <svg class="ico" viewBox="0 0 24 24" aria-hidden="true"><path d="M4 12h15m-5-5 5 5-5 5"/></svg></a>
+        </div>
+      </article>
+
+      <article class="card">
+        <div class="thumb"><svg viewBox="0 0 320 200" aria-hidden="true">
+          <rect width="320" height="200" fill="#f7f6f2"/><rect x="104" y="0" width="1" height="200" fill="#e2dfd7"/>
+          <rect x="12" y="16" width="44" height="5" fill="#8a929c"/><rect x="12" y="28" width="80" height="12" rx="3" fill="#fff" stroke="#cfcbc0"/>
+          <g><rect x="12" y="50" width="10" height="10" rx="2" fill="#2c5a8a" opacity=".2"/><rect x="26" y="51" width="62" height="8" fill="#17191d"/><rect x="12" y="66" width="10" height="10" rx="2" fill="#356f50" opacity=".2"/><rect x="26" y="67" width="54" height="8" fill="#17191d"/><rect x="10" y="80" width="86" height="14" rx="3" fill="#fff" stroke="#e2dfd7"/><rect x="12" y="82" width="10" height="10" rx="2" fill="#a94f27"/><rect x="26" y="83" width="44" height="8" fill="#a94f27"/><rect x="12" y="98" width="10" height="10" rx="2" fill="#634a99" opacity=".2"/><rect x="26" y="99" width="56" height="8" fill="#17191d"/><rect x="12" y="114" width="10" height="10" rx="2" fill="#1b6971" opacity=".2"/><rect x="26" y="115" width="60" height="8" fill="#17191d"/><rect x="12" y="130" width="10" height="10" rx="2" fill="#4f5967" opacity=".2"/><rect x="26" y="131" width="56" height="8" fill="#17191d"/></g>
+          <rect x="118" y="16" width="70" height="12" fill="#a94f27"/>
+          <g><rect x="118" y="36" width="190" height="62" rx="6" fill="#fff" stroke="#e2dfd7"/><rect x="124" y="42" width="56" height="50" rx="3" fill="#faf3ef"/><path d="M128 86C138 86 140 50 152 50S164 86 176 86" stroke="#a94f27" fill="none" stroke-width="1.5"/><rect x="188" y="48" width="96" height="6" fill="#17191d"/><rect x="188" y="62" width="60" height="4" fill="#a94f27"/><rect x="188" y="70" width="100" height="3" fill="#c7c3b8"/><rect x="262" y="80" width="38" height="11" rx="5.5" fill="#a94f27"/></g>
+          <g><rect x="118" y="106" width="190" height="62" rx="6" fill="#fff" stroke="#e2dfd7"/><rect x="124" y="112" width="56" height="50" rx="3" fill="#faf3ef"/><circle cx="152" cy="137" r="7" fill="none" stroke="#a94f27" stroke-width="1.5"/><rect x="188" y="118" width="90" height="6" fill="#17191d"/><rect x="188" y="132" width="64" height="4" fill="#a94f27"/><rect x="188" y="140" width="100" height="3" fill="#c7c3b8"/><rect x="262" y="150" width="38" height="11" rx="5.5" fill="#a94f27"/></g>
+        </svg></div>
+        <div class="body">
+          <div class="label"><span class="letter">C</span><h2>Task-Based Engineering Hub</h2></div>
+          <p>Start from the job to be done, from Learn to Manage Data, with each tool framed as the question it answers.</p>
+          <a class="open" href="concept-c/">Open concept <svg class="ico" viewBox="0 0 24 24" aria-hidden="true"><path d="M4 12h15m-5-5 5 5-5 5"/></svg></a>
+        </div>
+      </article>
+
+      <article class="card">
+        <div class="thumb"><svg viewBox="0 0 320 200" aria-hidden="true">
+          <rect width="320" height="200" fill="#e3e1db"/>
+          <rect x="8" y="14" width="126" height="128" rx="6" fill="#1b1f24"/><rect x="16" y="26" width="110" height="16" rx="3" fill="#252a31"/><rect x="16" y="48" width="110" height="12" rx="3" fill="#30363f"/><rect x="16" y="48" width="2" height="12" fill="#ff7d4a"/><g fill="#3a414b"><rect x="22" y="66" width="80" height="4"/><rect x="22" y="78" width="70" height="4"/><rect x="22" y="90" width="84" height="4"/><rect x="22" y="102" width="74" height="4"/><rect x="22" y="114" width="80" height="4"/></g>
+          <rect x="140" y="14" width="102" height="128" rx="6" fill="#fbfaf7"/><rect x="148" y="24" width="86" height="56" rx="4" fill="#f2f0eb"/><path d="M156 70h70M160 70l18-30h22l16 30" stroke="#2b323b" fill="none"/><rect x="148" y="88" width="70" height="7" fill="#16191d"/><rect x="148" y="100" width="86" height="3" fill="#c9c5bb"/><rect x="148" y="122" width="62" height="12" rx="3" fill="#c4461b"/><rect x="214" y="122" width="20" height="12" rx="3" fill="#fbfaf7" stroke="#d4d1c8"/>
+          <rect x="248" y="14" width="64" height="61" rx="6" fill="#fbfaf7"/><rect x="248" y="81" width="64" height="61" rx="6" fill="#fbfaf7"/><g fill="#c9c5bb"><rect x="256" y="30" width="40" height="4"/><rect x="256" y="40" width="34" height="4"/><rect x="256" y="96" width="44" height="4"/></g>
+          <rect x="8" y="148" width="234" height="44" rx="6" fill="#fbfaf7"/><g fill="#f2f0eb" stroke="#d4d1c8"><rect x="14" y="156" width="33" height="30" rx="3"/><rect x="52" y="156" width="33" height="30" rx="3"/><rect x="90" y="156" width="33" height="30" rx="3" fill="#1b1f24" stroke="#1b1f24"/><rect x="128" y="156" width="33" height="30" rx="3"/><rect x="166" y="156" width="33" height="30" rx="3"/><rect x="204" y="156" width="33" height="30" rx="3"/></g>
+          <rect x="248" y="148" width="64" height="44" rx="6" fill="#fbfaf7"/>
+        </svg></div>
+        <div class="body">
+          <div class="label"><span class="letter">D</span><h2>Modular Engineering Cockpit</h2></div>
+          <p>A keyboard-first launch panel, a selected-tool module, pinned and recent lists, and category and status switches. No metrics.</p>
+          <a class="open" href="concept-d/">Open concept <svg class="ico" viewBox="0 0 24 24" aria-hidden="true"><path d="M4 12h15m-5-5 5 5-5 5"/></svg></a>
+        </div>
+      </article>
+
+      <article class="card">
+        <div class="thumb"><svg viewBox="0 0 320 200" aria-hidden="true">
+          <rect width="320" height="200" fill="#f3efe6"/><rect x="0" y="16" width="320" height="1" fill="#ddd5c5"/><circle cx="12" cy="8" r="4" fill="#8a2e2a"/>
+          <g fill="#8a2e2a"><rect x="12" y="30" width="10" height="3"/><rect x="12" y="42" width="10" height="3"/><rect x="12" y="54" width="10" height="3"/></g><g fill="#1d5a58"><rect x="12" y="74" width="10" height="3"/><rect x="12" y="86" width="10" height="3"/><rect x="12" y="98" width="10" height="3"/></g><g fill="#4a443a"><rect x="26" y="30" width="34" height="3"/><rect x="26" y="42" width="30" height="3"/><rect x="26" y="54" width="34" height="3"/><rect x="26" y="74" width="34" height="3"/><rect x="26" y="86" width="30" height="3"/><rect x="26" y="98" width="34" height="3"/></g>
+          <rect x="76" y="26" width="70" height="12" fill="#1f1b16"/><rect x="76" y="44" width="160" height="2" fill="#1f1b16"/>
+          <g><rect x="76" y="54" width="160" height="66" rx="2" fill="#fffdf8" stroke="#ddd5c5"/><rect x="76" y="66" width="160" height="1" fill="#c9473f" opacity=".5"/><rect x="82" y="58" width="16" height="4" fill="#8a2e2a"/><rect x="82" y="74" width="80" height="7" fill="#1f1b16"/><rect x="82" y="86" width="90" height="3" fill="#a39b8b"/><rect x="82" y="92" width="70" height="3" fill="#a39b8b"/><rect x="82" y="106" width="30" height="9" fill="#1f1b16"/><rect x="186" y="72" width="44" height="30" fill="#fffefb" stroke="#ddd5c5"/></g>
+          <g><rect x="76" y="128" width="160" height="66" rx="2" fill="#fffdf8" stroke="#ddd5c5"/><rect x="76" y="140" width="160" height="1" fill="#c9473f" opacity=".5"/><rect x="82" y="132" width="16" height="4" fill="#8a2e2a"/><rect x="82" y="148" width="74" height="7" fill="#1f1b16"/></g>
+          <g fill="#1f1b16"><rect x="248" y="30" width="40" height="4"/><rect x="248" y="48" width="30" height="4"/><rect x="248" y="66" width="44" height="4"/><rect x="248" y="84" width="34" height="4"/><rect x="248" y="102" width="40" height="4"/><rect x="248" y="120" width="36" height="4"/></g>
+          <g stroke="#cbc1ad" stroke-dasharray="1 2"><path d="M292 33h18M282 51h28M296 69h14M286 87h24M292 105h18M288 123h22"/></g>
+          <g fill="#8a2e2a"><rect x="248" y="38" width="12" height="3"/><rect x="264" y="38" width="12" height="3"/><rect x="248" y="74" width="12" height="3"/></g>
+        </svg></div>
+        <div class="body">
+          <div class="label"><span class="letter">E</span><h2>Knowledge + Tool Library</h2></div>
+          <p>A catalogue with call numbers, reference and instrument shelves, and a subject index built from the real tags.</p>
+          <a class="open" href="concept-e/">Open concept <svg class="ico" viewBox="0 0 24 24" aria-hidden="true"><path d="M4 12h15m-5-5 5 5-5 5"/></svg></a>
+        </div>
+      </article>
+
+      <article class="card">
+        <div class="thumb"><svg viewBox="0 0 320 200" aria-hidden="true">
+          <rect width="320" height="200" fill="#d8dbd7"/><rect x="10" y="8" width="300" height="184" fill="#fdfdfb" stroke="#1b1d20"/><rect x="17" y="15" width="286" height="170" fill="none" stroke="#1b1d20" stroke-width="1.6"/>
+          <g stroke="#1b1d20"><path d="M53 8v4M89 8v4M125 8v4M161 8v4M197 8v4M233 8v4M269 8v4M10 54h4M10 100h4M10 146h4"/></g>
+          <path d="M17 32H303" stroke="#1b1d20" stroke-width=".8"/><rect x="24" y="22" width="40" height="3" fill="#1b1d20"/>
+          <g fill="none" stroke="#1b1d20" stroke-width=".9"><rect x="28" y="42" width="56" height="34"/><rect x="96" y="42" width="56" height="34"/><rect x="164" y="42" width="56" height="34"/><rect x="232" y="42" width="56" height="34"/><rect x="28" y="104" width="56" height="34"/></g>
+          <path d="M100 70C110 70 112 48 124 48S138 70 148 70" stroke="#1f4fa3" fill="none" stroke-width="1.4"/>
+          <g fill="none" stroke="#c23a2b" stroke-width="1"><path d="M94 102a4 4 0 0 1 8 0a4 4 0 0 1 8 0a4 4 0 0 1 8 0a4 4 0 0 1 8 0a4 4 0 0 1 8 0a4 4 0 0 1 8 0a4 4 0 0 1 8 0v8a4 4 0 0 1 0 8a4 4 0 0 1 0 8a4 4 0 0 1 0 8a4 4 0 0 1-8 0a4 4 0 0 1-8 0a4 4 0 0 1-8 0a4 4 0 0 1-8 0a4 4 0 0 1-8 0a4 4 0 0 1-8 0a4 4 0 0 1-8 0a4 4 0 0 1 0-8a4 4 0 0 1 0-8a4 4 0 0 1 0-8a4 4 0 0 1 0-8"/></g>
+          <g fill="#1b1d20"><circle cx="33" cy="86" r="4" fill="none" stroke="#1b1d20"/><rect x="40" y="84" width="36" height="3"/><circle cx="101" cy="86" r="4" fill="none" stroke="#1b1d20"/><rect x="108" y="84" width="36" height="3"/><circle cx="169" cy="86" r="4" fill="none" stroke="#1b1d20"/><rect x="176" y="84" width="36" height="3"/><circle cx="237" cy="86" r="4" fill="none" stroke="#1b1d20"/><rect x="244" y="84" width="36" height="3"/></g>
+          <path d="M17 154H303M200 154V185M200 166H303M234 166V185M268 166V185" stroke="#1b1d20" stroke-width=".9" fill="none"/><rect x="206" y="158" width="70" height="5" fill="#1b1d20"/>
+        </svg></div>
+        <div class="body">
+          <div class="label"><span class="letter">F</span><h2>Drawing Sheet <span style="font-weight:500;color:var(--muted)">(free exploration)</span></h2></div>
+          <p>The whole Hub as an engineering drawing: tools are detail views, In Development carries a revision cloud, and the title block holds the facts.</p>
+          <a class="open" href="concept-f/">Open concept <svg class="ico" viewBox="0 0 24 24" aria-hidden="true"><path d="M4 12h15m-5-5 5 5-5 5"/></svg></a>
+        </div>
+      </article>
+    </main>
+
+    <footer>
+      <span>Exploration only. Nothing here replaces the production Hub.</span>
+      <span>Design notes: <a href="README.md">concepts/README.md</a></span>
+    </footer>
+  </div>
+</body>
+</html>

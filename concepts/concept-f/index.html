@@ -1,0 +1,66 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="theme-color" content="#d8dbd7">
+  <title>Concept F · Drawing Sheet · CAE Engineering Hub</title>
+  <link rel="icon" href="../../assets/icons/hub.svg" type="image/svg+xml">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Barlow+Semi+Condensed:wght@400;500;600;700&family=Barlow:wght@400;500&display=swap">
+  <link rel="stylesheet" href="../shared/base.css">
+  <link rel="stylesheet" href="f.css">
+  <script src="../shared/hub.js" defer></script>
+  <script src="../shared/plates.js" defer></script>
+  <script src="f.js" defer></script>
+</head>
+<body>
+  <a class="skip-link" href="#field">Skip to the drawing</a>
+
+  <div class="sheet" id="sheet">
+    <div class="zones zones-top" aria-hidden="true"></div>
+    <div class="zones zones-bottom" aria-hidden="true"></div>
+    <div class="zones zones-left" aria-hidden="true"></div>
+    <div class="zones zones-right" aria-hidden="true"></div>
+
+    <div class="frame">
+      <header class="strip">
+        <div class="find">
+          <label for="q">Find</label>
+          <input id="q" type="search" autocomplete="off" spellcheck="false" placeholder="tool, tag or category" aria-describedby="find-count">
+          <span class="find-count" id="find-count" role="status" aria-live="polite" aria-atomic="true"></span>
+        </div>
+        <div class="views" role="group" aria-label="View by category" id="views"></div>
+        <a class="concepts-link" href="../">All concepts</a>
+      </header>
+
+      <main class="field" id="field" tabindex="-1" aria-label="Tool details">
+        <div class="details" id="details"></div>
+      </main>
+
+      <footer class="bottom">
+        <section class="notes" aria-labelledby="notes-title">
+          <h2 id="notes-title">Notes</h2>
+          <ol>
+            <li>Each detail is an independent tool. <b>Open</b> launches it in a new tab.</li>
+            <li>Status. Active: no mark. Preview: boxed note. In Development: revision cloud <span class="delta-inline" aria-hidden="true">△</span>.</li>
+            <li>Find and View grey out details that do not match; the sheet layout stays fixed. Press <kbd>/</kbd> to find.</li>
+            <li>Source: data/tools.json. Drawings are illustrative, not tool screenshots.</li>
+          </ol>
+        </section>
+        <section class="title-block" aria-label="Title block">
+          <div class="tb-cell tb-title"><span class="tb-k">Title</span><h1 class="tb-v">CAE Engineering Hub</h1></div>
+          <div class="tb-cell tb-sub"><span class="tb-k">Description</span><span class="tb-v">Personal CAE tool index</span></div>
+          <div class="tb-cell"><span class="tb-k">Details</span><span class="tb-v" id="tb-details">—</span></div>
+          <div class="tb-cell"><span class="tb-k">Categories</span><span class="tb-v" id="tb-cats">—</span></div>
+          <div class="tb-cell"><span class="tb-k">Sheet</span><span class="tb-v">1 of 1</span></div>
+          <div class="tb-cell"><span class="tb-k">Owner</span><span class="tb-v">ayay2270</span></div>
+          <div class="tb-cell"><span class="tb-k">Date</span><span class="tb-v" id="tb-date">—</span></div>
+          <div class="tb-cell tb-mark"><span class="tb-k">Concept</span><span class="tb-v">F / R1</span><span id="tb-mark"></span></div>
+        </section>
+      </footer>
+    </div>
+  </div>
+</body>
+</html>

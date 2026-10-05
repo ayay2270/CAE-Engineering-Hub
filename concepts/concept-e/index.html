@@ -1,0 +1,63 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="theme-color" content="#f3efe6">
+  <title>Concept E · Knowledge + Tool Library · CAE Engineering Hub</title>
+  <link rel="icon" href="../../assets/icons/hub.svg" type="image/svg+xml">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Source+Serif+4:ital,opsz,wght@0,8..60,400;0,8..60,500;0,8..60,600;1,8..60,400&family=IBM+Plex+Mono:wght@400;500&family=IBM+Plex+Sans:wght@400;500;600&display=swap">
+  <link rel="stylesheet" href="../shared/base.css">
+  <link rel="stylesheet" href="e.css">
+  <script src="../shared/hub.js" defer></script>
+  <script src="../shared/plates.js" defer></script>
+  <script src="e.js" defer></script>
+</head>
+<body>
+  <a class="skip-link" href="#catalogue">Skip to catalogue</a>
+
+  <header class="top">
+    <a class="brand" href="./" aria-label="CAE Engineering Hub, concept E home"><span id="brand-mark"></span><span class="brand-name">CAE Engineering Hub</span><span class="brand-sub">Library</span></a>
+    <div class="search">
+      <span class="search-ico" id="search-ico"></span>
+      <label class="sr-only" for="q">Search the catalogue</label>
+      <input id="q" type="search" placeholder="Search the catalogue" autocomplete="off" spellcheck="false">
+      <kbd aria-hidden="true">/</kbd>
+    </div>
+    <a class="concepts-link" href="../">All concepts</a>
+  </header>
+
+  <div class="library">
+    <nav class="sections" aria-label="Sections">
+      <p class="col-title">Sections</p>
+      <div id="sections"></div>
+      <div class="consulted">
+        <p class="col-title">Recently opened</p>
+        <div id="consulted"></div>
+      </div>
+    </nav>
+
+    <main class="catalogue" id="catalogue" tabindex="-1" aria-labelledby="cat-title">
+      <div class="cat-head">
+        <h1 id="cat-title">Catalogue</h1>
+        <p class="cat-intro" id="cat-intro">Reference works and working instruments for CAE. Shared subjects link related entries.</p>
+        <div class="active-filters" id="active-filters" aria-live="polite"></div>
+      </div>
+      <div id="shelves"></div>
+      <div class="empty" id="empty" hidden>
+        <h2>No entries found</h2>
+        <p id="empty-text"></p>
+        <button type="button" class="text-btn" id="empty-reset">Show the whole catalogue</button>
+      </div>
+    </main>
+
+    <aside class="subjects" aria-labelledby="subj-title">
+      <h2 class="col-title" id="subj-title">Subject index</h2>
+      <p class="subj-help">Each subject lists the entries that carry it.</p>
+      <ul class="subj-list" id="subjects"></ul>
+    </aside>
+  </div>
+</body>
+</html>
