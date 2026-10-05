@@ -1,0 +1,36 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Compact tile bench · CAE Engineering Hub</title>
+  <meta name="description" content="A dense modular bench of CAE engineering tools.">
+  <meta name="theme-color" content="#334155">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@500;600;700&family=Work+Sans:wght@400;500;600&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="b.css">
+  <script type="module" src="app.js"></script>
+</head>
+<body>
+  <a class="skip-link" href="#bench">Skip to tools</a>
+  <header class="bar">
+    <div class="brand">
+      <p class="product">CAE Engineering Hub</p>
+      <h1>Tool bench</h1>
+    </div>
+    <form class="search" role="search" onsubmit="event.preventDefault()">
+      <label for="tool-search">Search tools</label>
+      <input id="tool-search" type="search" placeholder="Name, purpose, or tag" autocomplete="off">
+    </form>
+    <a class="concepts" href="../index.html">All concepts</a>
+  </header>
+  <div class="filters" role="toolbar" aria-label="Categories">
+    <div id="categories" class="chips"></div>
+    <p id="count" role="status" aria-live="polite">Loading tools</p>
+  </div>
+  <main id="bench"></main>
+  <p id="live" class="sr-only" aria-live="polite"></p>
+  <noscript><p class="noscript">Enable JavaScript to load the tool bench.</p></noscript>
+</body>
+</html>

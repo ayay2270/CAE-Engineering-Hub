@@ -1,0 +1,37 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Work route · CAE Engineering Hub</title>
+  <meta name="description" content="Launch CAE tools from their place on the engineering job path.">
+  <meta name="theme-color" content="#f8fafc">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="f.css">
+  <script type="module" src="app.js"></script>
+</head>
+<body>
+  <a class="skip-link" href="#spine">Skip to work route</a>
+  <header class="mast">
+    <div>
+      <p class="product">CAE Engineering Hub</p>
+      <h1>Work route</h1>
+    </div>
+    <form class="search" role="search" onsubmit="event.preventDefault()">
+      <label for="tool-search">Find a station</label>
+      <input id="tool-search" type="search" placeholder="Name, purpose, or tag" autocomplete="off">
+    </form>
+    <a class="concepts" href="../index.html">All concepts</a>
+  </header>
+  <p class="route-note">References and materials feed the calculators. The checklist gates a run. Standards and weight data close the job.</p>
+  <p id="count" class="count" role="status">Loading tools</p>
+  <div class="board" id="board">
+    <svg id="links" class="links" aria-hidden="true"></svg>
+    <div id="spine" class="spine"></div>
+  </div>
+  <p id="live" class="sr-only" aria-live="polite"></p>
+  <noscript><p class="noscript">Enable JavaScript to load the work route.</p></noscript>
+</body>
+</html>

@@ -1,0 +1,37 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Navigation rail · CAE Engineering Hub</title>
+  <meta name="description" content="A narrow navigation rail and a wide canvas of CAE tool lanes.">
+  <meta name="theme-color" content="#0f172a">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Public+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="d.css">
+  <script type="module" src="app.js"></script>
+</head>
+<body>
+  <a class="skip-link" href="#canvas">Skip to canvas</a>
+  <div class="app" id="app">
+    <nav class="rail" id="rail" aria-label="Tool sections"></nav>
+    <div class="canvas" id="canvas" tabindex="-1">
+      <header class="canvas-bar">
+        <div>
+          <p class="product">CAE Engineering Hub</p>
+          <h1 id="canvas-title" tabindex="-1">All tools</h1>
+        </div>
+        <form class="search" role="search" onsubmit="event.preventDefault()">
+          <label for="tool-search">Search this view</label>
+          <input id="tool-search" type="search" placeholder="Name, purpose, or tag" autocomplete="off">
+        </form>
+        <p id="count">Loading tools</p>
+      </header>
+      <div id="lanes"></div>
+    </div>
+  </div>
+  <p id="live" class="sr-only" role="status" aria-live="polite"></p>
+  <noscript><p class="noscript">Enable JavaScript to load the workspace.</p></noscript>
+</body>
+</html>

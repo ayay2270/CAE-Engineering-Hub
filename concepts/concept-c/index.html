@@ -1,0 +1,61 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Command center · CAE Engineering Hub</title>
+  <meta name="description" content="Keyboard-first launcher for CAE tools, with search, recent tools, favorites, and category commands.">
+  <meta name="theme-color" content="#f8fafc">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@500&family=Public+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="c.css">
+  <script type="module" src="app.js"></script>
+</head>
+<body>
+  <a class="skip-link" href="#results">Skip to results</a>
+  <header class="top">
+    <div>
+      <p class="product">CAE Engineering Hub</p>
+      <h1>Command center</h1>
+    </div>
+    <a class="concepts" href="../index.html">All concepts</a>
+  </header>
+  <div class="command">
+    <label for="command-input">Search or run a command</label>
+    <div class="command-box">
+      <input id="command-input" type="search" role="combobox" aria-expanded="false" aria-controls="results" aria-autocomplete="list" autocomplete="off" placeholder="Tool, category, tag, or command" enterkeyhint="search">
+      <kbd id="shortcut">Ctrl K</kbd>
+    </div>
+    <p id="hint" class="hint">Arrow keys move through results. Enter opens the highlighted tool. Escape clears the search.</p>
+  </div>
+  <div class="workspace">
+    <aside class="commands" aria-label="Commands">
+      <section>
+        <h2>Recently used</h2>
+        <div id="recent"></div>
+      </section>
+      <section>
+        <h2>Favorites</h2>
+        <div id="favorites"></div>
+      </section>
+      <section>
+        <h2>Categories</h2>
+        <div id="categories" class="cat-list"></div>
+      </section>
+    </aside>
+    <section class="results-wrap" aria-labelledby="results-title">
+      <div class="results-head">
+        <div>
+          <h2 id="results-title">Results</h2>
+          <div id="scopes" class="scopes"></div>
+        </div>
+        <p id="count">Loading tools</p>
+      </div>
+      <div id="results" role="listbox" aria-label="Command results"></div>
+    </section>
+  </div>
+  <p id="live" class="sr-only" role="status" aria-live="polite"></p>
+  <noscript><p class="noscript">Enable JavaScript to use the command center.</p></noscript>
+</body>
+</html>

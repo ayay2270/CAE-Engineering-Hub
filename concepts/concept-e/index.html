@@ -1,0 +1,52 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Tool index · CAE Engineering Hub</title>
+  <meta name="description" content="An engineering directory of CAE tools with purpose, category, status, and a compact preview.">
+  <meta name="theme-color" content="#fafaf9">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Newsreader:wght@500;600&family=Roboto:wght@400;500;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="e.css">
+  <script type="module" src="app.js"></script>
+</head>
+<body>
+  <a class="skip-link" href="#index">Skip to tool index</a>
+  <header class="mast">
+    <div>
+      <p class="product">CAE Engineering Hub</p>
+      <h1>Tool index</h1>
+    </div>
+    <form class="search" role="search" onsubmit="event.preventDefault()">
+      <label for="tool-search">Search the index</label>
+      <input id="tool-search" type="search" placeholder="Name, purpose, category, or tag" autocomplete="off">
+    </form>
+    <a class="concepts" href="../index.html">All concepts</a>
+  </header>
+  <div class="controls">
+    <div>
+      <p id="category-label" class="control-label">Category</p>
+      <div id="categories" class="chips" role="group" aria-labelledby="category-label"></div>
+    </div>
+    <div>
+      <p id="status-label" class="control-label">Status</p>
+      <div id="statuses" class="chips" role="group" aria-labelledby="status-label"></div>
+    </div>
+    <div>
+      <p id="sort-label" class="control-label">Sort</p>
+      <div id="sorts" class="chips" role="group" aria-labelledby="sort-label"></div>
+    </div>
+    <div>
+      <p id="density-label" class="control-label">Density</p>
+      <div id="densities" class="chips" role="group" aria-labelledby="density-label"></div>
+    </div>
+  </div>
+  <p id="count" class="count" role="status" aria-live="polite">Loading tools</p>
+  <div class="legend" aria-hidden="true"><span>Preview</span><span>Tool and purpose</span><span>Category</span><span>Status</span><span>Open</span></div>
+  <main id="index"></main>
+  <p id="live" class="sr-only" aria-live="polite"></p>
+  <noscript><p class="noscript">Enable JavaScript to load the tool index.</p></noscript>
+</body>
+</html>
