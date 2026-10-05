@@ -2,6 +2,14 @@
 
 A lightweight local launcher for independent CAE tools. Plain HTML, CSS, JavaScript modules, and JSON; no framework, packages, build step, or application backend.
 
+## Quick links
+
+- [Open CAE Engineering Hub](https://ayay2270.github.io/CAE-Engineering-Hub/) — the hosted launcher on GitHub Pages.
+- [Open the local preview](http://127.0.0.1:4173/) — available on the computer running the local preview server below.
+- [View the GitHub repository](https://github.com/ayay2270/CAE-Engineering-Hub)
+
+The hosted Hub is a static website published from the `main` branch. Each tool opens its own independent site in a new tab.
+
 ## Local preview
 
 Serve this directory over HTTP because the tool collection is loaded with `fetch()` and the JavaScript uses modules. With Python installed:
@@ -11,7 +19,7 @@ cd "path\to\CAE-Engineering-Hub"
 python -m http.server 4173 --bind 127.0.0.1
 ```
 
-Open **http://127.0.0.1:4173/**. Stop the static preview server with Ctrl+C. Opening `index.html` directly with `file://` is not supported.
+Open [http://127.0.0.1:4173/](http://127.0.0.1:4173/). Stop the static preview server with Ctrl+C. Opening `index.html` directly with `file://` is not supported.
 
 ## Add or edit a tool
 
