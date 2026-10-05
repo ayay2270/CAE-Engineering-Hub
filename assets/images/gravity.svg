@@ -1,0 +1,10 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 600 240"><defs>
+<linearGradient id="bg" x2="1" y2="1"><stop stop-color="#eff5fa"/><stop offset="1" stop-color="#c9d9e7"/></linearGradient>
+<linearGradient id="metal" x2="0.8" y2="1"><stop stop-color="#c7d2db"/><stop offset="0.5" stop-color="#879cad"/><stop offset="1" stop-color="#526d82"/></linearGradient>
+<linearGradient id="blue" x2="1" y2="1"><stop stop-color="#4183bc"/><stop offset="1" stop-color="#143b5d"/></linearGradient>
+<linearGradient id="paper" x2="1" y2="1"><stop stop-color="#fff"/><stop offset="1" stop-color="#dce7f0"/></linearGradient>
+<linearGradient id="gold" x2="1" y2="1"><stop stop-color="#dfbe74"/><stop offset="1" stop-color="#977239"/></linearGradient>
+<pattern id="grid" width="28" height="28" patternUnits="userSpaceOnUse"><path d="M28 0H0V28" fill="none" stroke="#829fba" stroke-opacity=".2" stroke-width=".8"/></pattern>
+<pattern id="carbon" width="14" height="14" patternUnits="userSpaceOnUse"><rect width="14" height="14" fill="#263946"/><path d="M0 3h7M7 10h7" stroke="#7d939f" stroke-width="3"/></pattern>
+<filter id="shadow" x="-30%" y="-30%" width="160%" height="170%"><feDropShadow dx="0" dy="8" stdDeviation="7" flood-color="#1b3c59" flood-opacity=".2"/></filter>
+</defs><rect width="600" height="240" fill="url(#bg)"/><rect width="600" height="240" fill="url(#grid)"/><g transform="translate(50,20)" filter="url(#shadow)"><path d="m58 93 387-17-138 53-174 30-39-28-51-4Z" fill="url(#metal)" stroke="#6c879e"/><path d="m245 91-7-67 26 4 23 59M181 105 59 183l68 5 177-72M316 93l90-57 34 7-79 56" fill="url(#metal)" stroke="#6c879e"/><g fill="none" stroke="#aec3d4" stroke-width=".8"><path d="m99 88 80 45m-20-47 73 37m-5-44 54 34m6-36 46 32m16-35 30 28m15-28 26 17m-332 66 178-39M125 158l15 15m22-29 10 15m24-28 7 16M244 57l24 6"/></g></g><g transform="translate(296,131)"><circle r="24" fill="#f8fbfd" fill-opacity=".7" stroke="#204862" stroke-width="2"/><path d="M0-37v74M-37 0h74" stroke="#244b64" stroke-width="2"/><path d="M0-22A22 22 0 0 1 22 0H0ZM0 22A22 22 0 0 1-22 0H0Z" fill="#244b64"/></g></svg>

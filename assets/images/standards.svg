@@ -1,0 +1,10 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 600 240"><defs>
+<linearGradient id="bg" x2="1" y2="1"><stop stop-color="#eff5fa"/><stop offset="1" stop-color="#c9d9e7"/></linearGradient>
+<linearGradient id="metal" x2="0.8" y2="1"><stop stop-color="#c7d2db"/><stop offset="0.5" stop-color="#879cad"/><stop offset="1" stop-color="#526d82"/></linearGradient>
+<linearGradient id="blue" x2="1" y2="1"><stop stop-color="#4183bc"/><stop offset="1" stop-color="#143b5d"/></linearGradient>
+<linearGradient id="paper" x2="1" y2="1"><stop stop-color="#fff"/><stop offset="1" stop-color="#dce7f0"/></linearGradient>
+<linearGradient id="gold" x2="1" y2="1"><stop stop-color="#dfbe74"/><stop offset="1" stop-color="#977239"/></linearGradient>
+<pattern id="grid" width="28" height="28" patternUnits="userSpaceOnUse"><path d="M28 0H0V28" fill="none" stroke="#829fba" stroke-opacity=".2" stroke-width=".8"/></pattern>
+<pattern id="carbon" width="14" height="14" patternUnits="userSpaceOnUse"><rect width="14" height="14" fill="#263946"/><path d="M0 3h7M7 10h7" stroke="#7d939f" stroke-width="3"/></pattern>
+<filter id="shadow" x="-30%" y="-30%" width="160%" height="170%"><feDropShadow dx="0" dy="8" stdDeviation="7" flood-color="#1b3c59" flood-opacity=".2"/></filter>
+</defs><rect width="600" height="240" fill="url(#bg)"/><rect width="600" height="240" fill="url(#grid)"/><g transform="translate(88,29) rotate(-7 220 95)" filter="url(#shadow)"><path d="M0 22 87 0v193L0 216Z" fill="url(#metal)"/><path d="m87 0 15 8v187l-15-2Z" fill="#4b647a"/><path d="m108 21 94-10v196l-94 10Z" fill="url(#blue)"/><path d="m202 11 15 8v184l-15 4Z" fill="#14354f"/><path d="m222 30 99-9v187l-99 9Z" fill="#295881"/><path d="m321 21 15 9v171l-15 7Z" fill="#153b59"/><path d="m343 40 81 5v171l-81-4Z" fill="#376d98"/><g fill="#f3f8fc" font-family="Segoe UI,Arial,sans-serif" font-size="24" font-weight="500"><text x="14" y="84">ASTM</text><text x="132" y="85">ISO</text><text x="231" y="97" font-size="18">MIL-STD</text></g><g stroke="#afc9dd" opacity=".4"><path d="m17 123 54-11m-54 23 54-11m54 1 58-6m-58 19 58-6m50 8 70-5m-70 16 70-5M354 126h55M354 139h55"/></g></g></svg>

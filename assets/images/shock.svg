@@ -1,0 +1,11 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 600 240"><defs>
+<linearGradient id="bg" x2="1" y2="1"><stop stop-color="#eff5fa"/><stop offset="1" stop-color="#c9d9e7"/></linearGradient>
+<linearGradient id="metal" x2="0.8" y2="1"><stop stop-color="#c7d2db"/><stop offset="0.5" stop-color="#879cad"/><stop offset="1" stop-color="#526d82"/></linearGradient>
+<linearGradient id="blue" x2="1" y2="1"><stop stop-color="#4183bc"/><stop offset="1" stop-color="#143b5d"/></linearGradient>
+<linearGradient id="paper" x2="1" y2="1"><stop stop-color="#fff"/><stop offset="1" stop-color="#dce7f0"/></linearGradient>
+<linearGradient id="gold" x2="1" y2="1"><stop stop-color="#dfbe74"/><stop offset="1" stop-color="#977239"/></linearGradient>
+<pattern id="grid" width="28" height="28" patternUnits="userSpaceOnUse"><path d="M28 0H0V28" fill="none" stroke="#829fba" stroke-opacity=".2" stroke-width=".8"/></pattern>
+<pattern id="carbon" width="14" height="14" patternUnits="userSpaceOnUse"><rect width="14" height="14" fill="#263946"/><path d="M0 3h7M7 10h7" stroke="#7d939f" stroke-width="3"/></pattern>
+<filter id="shadow" x="-30%" y="-30%" width="160%" height="170%"><feDropShadow dx="0" dy="8" stdDeviation="7" flood-color="#1b3c59" flood-opacity=".2"/></filter>
+</defs><rect width="600" height="240" fill="url(#bg)"/><rect width="600" height="240" fill="url(#grid)"/><text x="40" y="119" font-family="Georgia,serif" font-size="40" fill="#2c4962" font-style="italic">v₀ = ∫ a(t) dt</text>
+<g transform="translate(326,32)"><path d="M0 171H222M18 177V0" stroke="#3e5a73" fill="none" stroke-width="1.8"/><path d="M18 171C38 168 37 38 70 24S98 168 181 170H222" stroke="#2369a7" fill="none" stroke-width="3"/><path d="M18 171C38 168 37 38 70 24S98 168 181 170" fill="#7eaad0" fill-opacity=".15"/><path d="M70 24V171M101 82V171M18 103H210" stroke="#8eabc2" stroke-dasharray="4 4"/><text x="-1" y="-5" font-family="Georgia,serif" fill="#385772" font-size="17">a(t)</text><text x="221" y="190" font-family="Georgia,serif" fill="#385772" font-size="18">t</text></g></svg>

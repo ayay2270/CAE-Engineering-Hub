@@ -1,0 +1,3 @@
+const normalize=value=>String(value).normalize('NFKC').toLocaleLowerCase();
+export function matchesSearch(tool,query){const words=normalize(query).trim().split(/\s+/).filter(Boolean);const haystack=normalize([tool.name,tool.description,tool.category,...tool.tags].join(' '));return words.every(word=>haystack.includes(word));}
+export function enableSearchShortcut(input){document.addEventListener('keydown',event=>{if((event.ctrlKey||event.metaKey)&&event.key.toLowerCase()==='k'){event.preventDefault();input.focus();input.select();}else if(event.key==='Escape'&&document.activeElement===input&&input.value){input.value='';input.dispatchEvent(new Event('input'));}});}

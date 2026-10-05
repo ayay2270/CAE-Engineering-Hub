@@ -1,0 +1,93 @@
+[
+  {
+    "id": "knowledge-base",
+    "name": "CAE Knowledge Base",
+    "shortName": "Knowledge Base",
+    "category": "Knowledge",
+    "status": "Active",
+    "description": "Browse CAE methodologies, technical notes, and practical engineering references.",
+    "tags": ["CAE", "Best Practice"],
+    "url": "https://ayay2270.github.io/CAE-Knowledge-Base-V4/",
+    "repo": "https://github.com/ayay2270/CAE-Knowledge-Base-V4",
+    "image": "assets/images/knowledge.svg",
+    "featured": true
+  },
+  {
+    "id": "material-library",
+    "name": "CAE Material Library",
+    "shortName": "Material Library",
+    "category": "Materials",
+    "status": "Preview",
+    "description": "Look up material properties for metals, polymers, and composites used in CAE models.",
+    "tags": ["Properties", "CAE"],
+    "url": "https://ayay2270.github.io/CAE-Material-Library-V2-Preview/",
+    "repo": "https://github.com/ayay2270/CAE-Material-Library-V2-Preview",
+    "image": "assets/images/materials.svg",
+    "featured": true
+  },
+  {
+    "id": "shock-pulse",
+    "name": "Shock Pulse Initial Velocity Calculator",
+    "shortName": "Shock Pulse Calculator",
+    "category": "Calculators",
+    "status": "Active",
+    "description": "Calculate initial velocity from a shock pulse acceleration–time history.",
+    "tags": ["Dynamics", "Impact"],
+    "url": "https://ayay2270.github.io/Shock-Pulse-Initial-Velocity-Calculator-V2/",
+    "repo": "https://github.com/ayay2270/Shock-Pulse-Initial-Velocity-Calculator-V2",
+    "image": "assets/images/shock.svg",
+    "featured": true
+  },
+  {
+    "id": "center-of-gravity",
+    "name": "Center of Gravity Calculator",
+    "shortName": "Center of Gravity",
+    "category": "Calculators",
+    "status": "Active",
+    "description": "Determine the center of gravity of components and multi-body assemblies.",
+    "tags": ["Mass Properties", "Geometry"],
+    "url": "https://ayay2270.github.io/Center-of-Gravity-Calculator-V2/",
+    "repo": "https://github.com/ayay2270/Center-of-Gravity-Calculator-V2",
+    "image": "assets/images/gravity.svg",
+    "featured": false
+  },
+  {
+    "id": "pre-run-checklist",
+    "name": "CAE Pre-run Checklist",
+    "shortName": "Pre-run Checklist",
+    "category": "Workflow",
+    "status": "Active",
+    "description": "Review model setup, mesh quality, and boundary conditions before a simulation run.",
+    "tags": ["Quality", "Best Practice"],
+    "url": "https://ayay2270.github.io/cae-pre-run-checklist/",
+    "repo": "https://github.com/ayay2270/cae-pre-run-checklist",
+    "image": "assets/images/checklist.svg",
+    "featured": false
+  },
+  {
+    "id": "standard-finder",
+    "name": "Engineering Test Standard Finder",
+    "shortName": "Test Standard Finder",
+    "category": "Standards",
+    "status": "In Development",
+    "description": "Find engineering test standards by keyword, application, or test type.",
+    "tags": ["Testing", "Reference"],
+    "url": "https://ayay2270.github.io/Engineering-Test-Standard-Finder-V2/",
+    "repo": "https://github.com/ayay2270/Engineering-Test-Standard-Finder-V2",
+    "image": "assets/images/standards.svg",
+    "featured": false
+  },
+  {
+    "id": "weight-manager",
+    "name": "Weight Data Manager",
+    "shortName": "Weight Data Manager",
+    "category": "Project Data",
+    "status": "In Development",
+    "description": "Organize and compare component and assembly weight data across configurations.",
+    "tags": ["Mass Properties", "Configuration"],
+    "url": "https://ayay2270.github.io/Weight-Data-Manager-V2/",
+    "repo": "https://github.com/ayay2270/Weight-Data-Manager-V2",
+    "image": "assets/images/weight.svg",
+    "featured": false
+  }
+]

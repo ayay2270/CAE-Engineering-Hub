@@ -1,0 +1,72 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="theme-color" content="#142b40">
+  <meta name="description" content="A personal launcher for CAE engineering tools, knowledge, materials, and standards.">
+  <title>CAE Engineering Hub</title>
+  <link rel="icon" href="assets/icons/hub.svg" type="image/svg+xml">
+  <link rel="stylesheet" href="css/base.css">
+  <link rel="stylesheet" href="css/layout.css">
+  <link rel="stylesheet" href="css/components.css">
+  <link rel="stylesheet" href="css/responsive.css">
+  <script type="module" src="js/app.js"></script>
+</head>
+<body>
+  <a class="skip-link" href="#workspace">Skip to tools</a>
+  <header class="topbar">
+    <button class="menu-button icon-button" id="menu-button" aria-label="Open navigation" aria-expanded="false" aria-controls="sidebar"></button>
+    <a class="brand" href="#home" aria-label="CAE Engineering Hub home">
+      <img src="assets/icons/hub.svg" width="44" height="44" alt="">
+      <span><strong>CAE Engineering Hub</strong><small>YOUR ENGINEERING WORKSPACE</small></span>
+    </a>
+    <div class="search-wrap">
+      <span id="search-icon" class="search-icon" aria-hidden="true"></span>
+      <label class="sr-only" for="tool-search">Search tools</label>
+      <input id="tool-search" type="search" placeholder="Search tools, materials, standards…" autocomplete="off">
+      <kbd id="search-shortcut">Ctrl K</kbd>
+    </div>
+  </header>
+  <div class="app-layout">
+    <aside class="sidebar" id="sidebar" aria-label="Navigation">
+      <nav aria-label="Tool navigation">
+        <div class="nav-group" id="main-navigation"></div>
+        <p class="nav-label">CATEGORIES</p>
+        <div class="nav-group" id="category-navigation"></div>
+        <div class="nav-divider"></div>
+        <p class="nav-label">PERSONAL</p>
+        <div class="nav-group" id="personal-navigation"></div>
+      </nav>
+      <div class="sidebar-note"><span class="local-dot"></span> Personal launchpad<small>Independent tools. One workspace.</small></div>
+    </aside>
+    <button id="nav-scrim" class="nav-scrim" aria-label="Close navigation" tabindex="-1" hidden></button>
+    <main id="workspace" tabindex="-1">
+      <section class="hero" id="hero" aria-labelledby="hero-title">
+        <div class="hero-copy">
+          <p class="eyebrow">ENGINEERING TOOLS, IN ONE PLACE</p>
+          <h1 id="hero-title">CAE Engineering Hub</h1>
+          <p class="hero-subtitle">Tools · Knowledge · Materials · Standards · Workflow</p>
+          <div class="hero-details"><span id="hero-cube" aria-hidden="true"></span><span>Your personal CAE launchpad</span><span class="detail-divider"></span><span class="hero-hint">Find a tool. Get to work.</span></div>
+        </div>
+      </section>
+      <section class="tool-section" aria-labelledby="view-title">
+        <div class="section-heading">
+          <div><p class="eyebrow" id="view-eyebrow">THE TOOL COLLECTION</p><h2 id="view-title">Your engineering tools</h2></div>
+          <span id="tool-count" class="tool-count" role="status" aria-live="polite" aria-atomic="true">Loading tools…</span>
+        </div>
+        <div class="filter-bar">
+          <div class="filter-field"><label for="category-filter">Category</label><select id="category-filter"><option value="">All Categories</option></select></div>
+          <div class="filter-field"><label for="status-filter">Status</label><select id="status-filter"><option value="">All Statuses</option><option>Active</option><option>Preview</option><option>In Development</option></select></div>
+          <button id="clear-filters" class="clear-filters" type="button">Reset filters</button>
+        </div>
+        <div id="tool-grid" class="tool-grid" aria-busy="true"></div>
+        <div id="empty-state" class="empty-state" hidden><div id="empty-icon" aria-hidden="true"></div><h3 id="empty-title"></h3><p id="empty-description"></p><button class="secondary-button" id="empty-reset" hidden>Reset filters</button></div>
+      </section>
+      <footer class="workspace-footer"><span>CAE ENGINEERING HUB</span><span>Tools open in their own workspace <span aria-hidden="true">↗</span></span></footer>
+      <noscript><p class="error-message">Enable JavaScript to load the tool collection and local favorites.</p></noscript>
+    </main>
+  </div>
+  <div id="notice" class="notice" role="status" aria-live="polite" hidden></div>
+</body>
+</html>

@@ -1,0 +1,12 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 600 240"><defs>
+<linearGradient id="bg" x2="1" y2="1"><stop stop-color="#eff5fa"/><stop offset="1" stop-color="#c9d9e7"/></linearGradient>
+<linearGradient id="metal" x2="0.8" y2="1"><stop stop-color="#c7d2db"/><stop offset="0.5" stop-color="#879cad"/><stop offset="1" stop-color="#526d82"/></linearGradient>
+<linearGradient id="blue" x2="1" y2="1"><stop stop-color="#4183bc"/><stop offset="1" stop-color="#143b5d"/></linearGradient>
+<linearGradient id="paper" x2="1" y2="1"><stop stop-color="#fff"/><stop offset="1" stop-color="#dce7f0"/></linearGradient>
+<linearGradient id="gold" x2="1" y2="1"><stop stop-color="#dfbe74"/><stop offset="1" stop-color="#977239"/></linearGradient>
+<pattern id="grid" width="28" height="28" patternUnits="userSpaceOnUse"><path d="M28 0H0V28" fill="none" stroke="#829fba" stroke-opacity=".2" stroke-width=".8"/></pattern>
+<pattern id="carbon" width="14" height="14" patternUnits="userSpaceOnUse"><rect width="14" height="14" fill="#263946"/><path d="M0 3h7M7 10h7" stroke="#7d939f" stroke-width="3"/></pattern>
+<filter id="shadow" x="-30%" y="-30%" width="160%" height="170%"><feDropShadow dx="0" dy="8" stdDeviation="7" flood-color="#1b3c59" flood-opacity=".2"/></filter>
+</defs><rect width="600" height="240" fill="url(#bg)"/><rect width="600" height="240" fill="url(#grid)"/><g transform="translate(0,-6)">
+<g transform="translate(32,40) rotate(-7 130 90)" filter="url(#shadow)"><path d="M0 20Q70 0 145 25Q220 0 295 20V172Q220 157 145 181Q70 157 0 172Z" fill="url(#paper)" stroke="#bacdda"/><path d="M145 25V181" stroke="#93a9ba"/><g fill="none" stroke="#7c99b1" stroke-width="1"><path d="M19 45h95M19 52h95M19 59h70M165 45h102M165 52h102M165 59h80M19 130h95M19 138h95M19 146h72M165 129h95M165 138h95M165 146h83"/><path d="M27 80h63v33H27ZM35 87h47v19H35M185 84l37-13 31 27-36 17Z"/><circle cx="222" cy="95" r="9"/></g></g>
+<g transform="translate(342,120) rotate(10)" filter="url(#shadow)"><path d="M0 32h190v37H0Z" fill="#28435d"/><path d="M4 35h183v26H4" fill="#d6e1eb"/><path d="M0 32h190v9H0Z" fill="#366387"/><path d="M10 0h180v37H10Z" fill="url(#blue)"/><path d="M15 7h170v22H15" fill="#5c89af"/><path d="M18-30h173v35H18Z" fill="#476981"/><path d="M26-23h160v23H26" fill="#d0dce5"/><path d="M18-30h173v8H18Z" fill="#153752"/></g></g></svg>
