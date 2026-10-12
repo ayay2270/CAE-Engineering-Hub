@@ -1,0 +1,131 @@
+<!doctype html>
+<html lang="zh-Hant">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>CAE Engineering Toolbox Prototype</title>
+<link rel="stylesheet" href="styles.css">
+<script defer src="app.js"></script>
+</head>
+<body>
+<div class="app-shell">
+<aside class="sidebar">
+  <div class="brand"><div class="brand-mark">CAE</div><div><strong>Engineering Toolbox</strong><small>Desktop Prototype · 1 / 3 / 4</small></div></div>
+  <nav>
+    <button class="nav-item active" data-page="home"><span>⌂</span>Home</button>
+    <div class="nav-label">MODEL PREP</div>
+    <button class="nav-item" data-page="converter"><span>⇄</span>Model Converter</button>
+    <button class="nav-item" data-page="density"><span>◇</span>Density Tuner</button>
+    <div class="nav-label muted-label">NEXT MODULES</div>
+    <button class="nav-item disabled" disabled><span>▤</span>Material Library</button>
+    <button class="nav-item disabled" disabled><span>▥</span>Result Comparator</button>
+    <button class="nav-item disabled" disabled><span>▣</span>Report Generator</button>
+  </nav>
+  <div class="sidebar-footer"><div class="status-dot"></div><div><b id="runtime-label">Browser Preview</b><small id="runtime-detail">Desktop bridge not connected</small></div></div>
+</aside>
+
+<main class="workspace">
+<header class="topbar">
+  <div><div class="crumb">CAE ENGINEERING TOOLBOX</div><h1 id="page-title">Home</h1></div>
+  <div class="top-actions"><span class="pill" id="mode-pill">Prototype</span><button class="ghost-btn" id="open-folder-btn">Open project folder</button></div>
+</header>
+
+<section class="page active" id="page-home">
+  <div class="hero-panel">
+    <div><span class="eyebrow">DESKTOP WORKSPACE</span><h2>把零散 CAE 小工具，變成一個可真正處理模型的工作台</h2><p>第一版先實作你指定的 ① Home、③ Model Converter、④ Density Tuner。Home 管入口，Converter 管 OptiStruct → LS-DYNA 的轉換流程，Density Tuner 沿用你材料庫既有的密度計算邏輯。</p></div>
+    <div class="hero-kpis"><div><b>3</b><span>Prototype modules</span></div><div><b>1</b><span>Desktop shell</span></div><div><b>0</b><span>模型會被偷偷修改</span></div></div>
+  </div>
+
+  <div class="section-heading"><div><span class="eyebrow">QUICK START</span><h2>這三個頁面點進去是在做什麼？</h2></div></div>
+  <div class="module-grid">
+    <article class="module-card blue" data-open="home"><div class="module-icon">⌂</div><div><h3>1. Home / Dashboard</h3><p>桌面工具的總入口。顯示最近專案、模組狀態、HyperMesh/Python 連線狀態與下一步。</p><ul><li>快速進入常用工具</li><li>保留最近處理的專案</li><li>之後統合所有 Desktop 模組</li></ul></div><button>目前頁面</button></article>
+    <article class="module-card orange" data-open="converter"><div class="module-icon">⇄</div><div><h3>3. Model Converter</h3><p>把 HyperMesh / OptiStruct 模型轉為可分析的 LS-DYNA 模型，並逐項追蹤 Material、Property、Contact、Connector 與 ELFORM。</p><ul><li>選模型與轉換規則</li><li>顯示修復項目與 log</li><li>先做 Dry Run，再接真正 HM API</li></ul></div><button>開啟 Converter →</button></article>
+    <article class="module-card purple" data-open="density"><div class="module-icon">◇</div><div><h3>4. Density Tuner</h3><p>沿用你既有 Material Library 的公式，以目前重量、目標重量與數量計算建議密度。</p><ul><li>支援 ton / kg / g</li><li>即時計算 Recommended Density</li><li>Desktop 後續可直接套用 HyperMesh</li></ul></div><button>開啟 Density Tuner →</button></article>
+  </div>
+
+  <div class="two-col">
+    <section class="panel">
+      <div class="panel-title"><div><span class="eyebrow">WORKFLOW</span><h3>未來完整工作流</h3></div><span class="badge">Roadmap</span></div>
+      <div class="workflow">
+        <div class="workflow-step done"><b>1</b><span>Material / Model<small>準備材料與模型</small></span></div><div class="arrow">→</div>
+        <div class="workflow-step active"><b>2</b><span>Convert<small>轉換 / 修復模型</small></span></div><div class="arrow">→</div>
+        <div class="workflow-step"><b>3</b><span>Run<small>Solver 分析</small></span></div><div class="arrow">→</div>
+        <div class="workflow-step"><b>4</b><span>Compare<small>結果比較</small></span></div><div class="arrow">→</div>
+        <div class="workflow-step"><b>5</b><span>Report<small>產生報告</small></span></div>
+      </div>
+    </section>
+    <section class="panel">
+      <div class="panel-title"><div><span class="eyebrow">DESKTOP STATUS</span><h3>環境狀態</h3></div></div>
+      <div class="status-list"><div><span>Frontend</span><b class="ok">Ready</b></div><div><span>pywebview bridge</span><b id="bridge-status">Preview only</b></div><div><span>HyperMesh API</span><b class="warn">Not connected in POC</b></div><div><span>LS-DYNA export engine</span><b class="warn">Not connected in POC</b></div></div>
+    </section>
+  </div>
+</section>
+
+<section class="page" id="page-converter">
+  <div class="page-intro"><div><span class="eyebrow orange-text">MODEL CONVERTER</span><h2>HyperMesh / OptiStruct → LS-DYNA</h2><p>這一頁不是單純轉格式。目標是把轉換後會掉掉或變形的 solver 設定逐項重建，最後才輸出可檢查的 LS-DYNA deck。</p></div><span class="safe-badge">POC：只做 Dry Run，不修改模型</span></div>
+  <div class="stepper"><div class="step current"><b>1</b><span>選擇模型<small>Model input</small></span></div><div class="step"><b>2</b><span>設定規則<small>Repair rules</small></span></div><div class="step"><b>3</b><span>執行轉換<small>Automation</small></span></div><div class="step"><b>4</b><span>檢查結果<small>Validation</small></span></div></div>
+  <div class="converter-layout">
+    <section class="panel">
+      <div class="panel-title"><div><span class="number-tag">1</span><h3>輸入模型</h3></div></div>
+      <label class="field-label">HyperMesh / OptiStruct model</label>
+      <div class="file-row"><input id="model-path" readonly placeholder="尚未選擇模型"><button class="primary-btn" id="browse-model">Browse</button><input id="browser-model-input" type="file" hidden accept=".hm,.fem,.bdf,.k,.key"></div>
+      <div class="file-meta" id="file-meta">支援 POC 選檔；真正轉換引擎尚未接入。</div>
+      <div class="subsection"><label class="field-label">輸出模式</label><div class="segmented"><button class="selected">Dry Run</button><button disabled>Convert + Export</button></div></div>
+    </section>
+    <section class="panel">
+      <div class="panel-title"><div><span class="number-tag">2</span><h3>修復 / 轉換規則</h3></div><button class="text-btn" id="select-all-rules">全選</button></div>
+      <div class="rule-list">
+        <label><input type="checkbox" data-rule="material" checked><span><b>Material</b><small>金屬 → MAT_003；EPE → MAT_057</small></span></label>
+        <label><input type="checkbox" data-rule="property" checked><span><b>Property</b><small>Shell / Solid property mapping</small></span></label>
+        <label><input type="checkbox" data-rule="contact" checked><span><b>Contact</b><small>重建 Single Surface / Tied 與 set identity</small></span></label>
+        <label><input type="checkbox" data-rule="connector" checked><span><b>Connector</b><small>檢查 RBE2 / fastener 轉換</small></span></label>
+        <label><input type="checkbox" data-rule="section" checked><span><b>Shell / Solid</b><small>保留厚度；Solid 補 solver-specific 設定</small></span></label>
+        <label><input type="checkbox" data-rule="elform" checked><span><b>ELFORM</b><small>依 element family 做 mapping，不 hard-code Hexa</small></span></label>
+        <label><input type="checkbox" data-rule="keyword" checked><span><b>Keyword Output</b><small>輸出 LS-DYNA .k / .key</small></span></label>
+      </div>
+    </section>
+    <section class="panel log-panel">
+      <div class="panel-title"><div><span class="number-tag">3</span><h3>Dry Run / 轉換紀錄</h3></div><span class="badge" id="converter-state">Waiting</span></div>
+      <div class="log-window" id="converter-log"><div class="log-line muted">選擇模型後按「執行 Dry Run」。</div><div class="log-line muted">POC 不會寫入 HM、不會修改 Property、不會輸出假 deck。</div></div>
+      <button class="primary-btn wide" id="run-converter">執行 Dry Run</button>
+    </section>
+  </div>
+  <section class="known-rules">
+    <div class="known-card"><span class="mini-status ready">已定義</span><h4>Material Strategy</h4><p>金屬統一走 MAT_003；EPE 統一走 MAT_057。H 與 ETAN 分開處理。</p></div>
+    <div class="known-card"><span class="mini-status ready">已知</span><h4>Shell / Solid</h4><p>Shell thickness 可保留；Solid 需要依 Tetra / Penta / Hex family 決定後續設定。</p></div>
+    <div class="known-card"><span class="mini-status block">目前阻塞</span><h4>Contact / Segment Set</h4><p>不能把 face membership 當成可 export 的 *SET_SEGMENT identity，需用 HM API Recording 抓 ground truth。</p></div>
+    <div class="known-card"><span class="mini-status caution">注意</span><h4>Connector</h4><p>轉換後 RBE2 / Auto Fastener 需檢查；多層設定曾造成 crash，不能盲目自動修。</p></div>
+  </section>
+</section>
+
+<section class="page" id="page-density">
+  <div class="page-intro"><div><span class="eyebrow purple-text">DENSITY TUNER</span><h2>用目標重量反推材料密度</h2><p>這個核心公式直接沿用你目前 CAE Material Library V2 的 Density Tuner：New Density = Current Density × (Target Mass × Quantity) / Current Mass。</p></div><span class="safe-badge purple-safe">計算可用 · HM 套用仍為 Dry Run</span></div>
+  <div class="density-layout">
+    <section class="panel">
+      <div class="panel-title"><div><span class="number-tag purple-tag">1</span><h3>輸入條件</h3></div></div>
+      <div class="form-grid">
+        <label><span>Current Density</span><input id="density-current" value="8.565E-10"></label>
+        <label><span>Quantity</span><input id="density-quantity" value="1" inputmode="numeric"></label>
+        <label><span>Current Mass</span><div class="input-with-unit"><input id="density-current-mass" value="6.02E-5"><select id="density-current-unit"><option>ton</option><option>kg</option><option>g</option></select></div></label>
+        <label><span>Target Mass</span><div class="input-with-unit"><input id="density-target-mass" value="3.13"><select id="density-target-unit"><option>kg</option><option>ton</option><option>g</option></select></div></label>
+      </div>
+      <button class="primary-btn wide purple-btn" id="calculate-density">重新計算</button>
+    </section>
+    <section class="panel result-panel">
+      <div class="panel-title"><div><span class="number-tag purple-tag">2</span><h3>計算結果</h3></div></div>
+      <div class="big-result"><span>Recommended Density</span><b id="density-result">—</b><small>保持幾何不變，以密度線性調整總重量</small></div>
+      <div class="result-row"><span>Scale Factor</span><b id="density-scale">—</b></div>
+      <div class="result-row"><span>Expected Mass</span><b id="density-expected">—</b></div>
+      <div class="result-row"><span>Total Target</span><b id="density-total">—</b></div>
+    </section>
+    <section class="panel">
+      <div class="panel-title"><div><span class="number-tag purple-tag">3</span><h3>HyperMesh 動作</h3></div></div>
+      <div class="hm-action"><label class="field-label">Target component / material</label><input id="density-target-component" placeholder="例如：DUMMY_BLOCK / Material ID"><button class="outline-btn wide" id="density-apply">Apply to HyperMesh（Dry Run）</button><p id="density-apply-status">目前只驗證數值與產生 action plan，不會改 HM 模型。</p></div>
+    </section>
+  </div>
+  <section class="formula-panel"><span>工程公式</span><b>New Density = Current Density × (Target Mass × Quantity) / Current Mass</b><p>不同重量單位會先換算成 kg 後取比值；這與現有 Material Library V2 的實作一致。</p></section>
+</section>
+</main>
+</div>
+</body>
+</html>
