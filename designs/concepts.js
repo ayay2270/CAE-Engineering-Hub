@@ -1,6 +1,6 @@
-import {icon} from '../js/icons.js';
-import {validateTools,element as el} from '../js/tools.js';
-import {matchesSearch} from '../js/search.js';
+import {icon} from './shared/icons.js';
+import {validateTools,element as el} from './shared/catalog.js';
+import {matchesSearch} from './shared/search.js';
 
 const concepts={
  a:{name:'藍色工作區',english:'Blue Workspace',anchor:'Swiss',description:'白底側欄與規律卡片，把分類、收藏與工具放在固定位置。',detail:'Yves Klein Blue · Helvetica Neue · 細線網格',for:'適合每天使用的公司內部入口',title:'Engineering Workspace',subtitle:'分析、計算與工程資料，從這裡開始。'},
@@ -56,5 +56,5 @@ else {
  function launch(event){const link=event.target.closest('a[data-launch]');if(link){state.recent=[link.dataset.launch,...state.recent.filter(id=>id!==link.dataset.launch)].slice(0,12);save(recentKey,state.recent);renderNav();}}
  grid.addEventListener('click',event=>{const star=event.target.closest('button[data-favorite]');if(!star){launch(event);return;}const id=star.dataset.favorite;state.favorites.has(id)?state.favorites.delete(id):state.favorites.add(id);save(favoriteKey,[...state.favorites]);if(state.view==='favorites'){render();nav.querySelector('[data-view="favorites"]')?.focus();}else{const selected=state.favorites.has(id);star.setAttribute('aria-pressed',String(selected));star.setAttribute('aria-label',`${selected?'取消收藏':'收藏'} ${state.tools.find(t=>t.id===id).name}`);renderNav();}notice(storageFailed?'此瀏覽器無法保存偏好，收藏僅保留於本次工作階段。':state.favorites.has(id)?'已加入收藏':'已取消收藏');});grid.addEventListener('auxclick',event=>{if(event.button===1)launch(event);});
  document.addEventListener('keydown',event=>{if((event.ctrlKey||event.metaKey)&&event.key.toLowerCase()==='k'){event.preventDefault();search.focus();search.select();}if(event.key==='Escape'&&document.activeElement===search){search.value='';state.query='';render();}});
- try{const response=await fetch('../data/tools.json');if(!response.ok)throw Error('無法載入工具清單');state.tools=validateTools(await response.json());render();if(storageFailed)notice('瀏覽器無法保存偏好，本次操作仍可使用。');}catch(error){empty.hidden=false;emptyHeading.textContent='工具目錄載入失敗';emptyText.textContent=error.message;clear.hidden=true;}
+ try{const response=await fetch('data/tools.json');if(!response.ok)throw Error('無法載入工具清單');state.tools=validateTools(await response.json());render();if(storageFailed)notice('瀏覽器無法保存偏好，本次操作仍可使用。');}catch(error){empty.hidden=false;emptyHeading.textContent='工具目錄載入失敗';emptyText.textContent=error.message;clear.hidden=true;}
 }

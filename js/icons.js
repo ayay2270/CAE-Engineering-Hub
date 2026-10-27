@@ -1,10 +1,4 @@
 const paths = {
-  external:'<path d="M14 3h7v7M21 3 10 14M10 3H3v18h18v-7"/>',
-  shield:'<path d="m12 2 9 4v6c0 5-9 10-9 10S3 17 3 12V6Zm-5 10 3 3 6-6"/>',
-  chart:'<path d="M3 3v18h18M7 16v-5m5 5V6m5 10v-8"/>',
-  pulse:'<path d="M2 18h4c2 0 2-12 6-12s4 12 6 12h4M12 2v2M3 22h18"/>',
-  gravity:'<path d="M6 3h12v18H6ZM2 21h20M12 3v18M8 12h8"/><circle cx="12" cy="12" r="2"/>',
-  link:'<path d="m10 13 4-4M8 16l-2 2a4 4 0 0 1-6-6l5-5a4 4 0 0 1 6 0m2 1 2-2a4 4 0 0 1 6 6l-5 5a4 4 0 0 1-6 0" transform="translate(2 0)"/>',
   home:'<path d="m3 10 9-7 9 7v10H15v-7H9v7H3Z"/>',
   grid:'<rect x="3" y="3" width="6" height="6" rx="1"/><rect x="15" y="3" width="6" height="6" rx="1"/><rect x="3" y="15" width="6" height="6" rx="1"/><rect x="15" y="15" width="6" height="6" rx="1"/>',
   book:'<path d="M12 5v16M12 5C9 2 5 3 2 4v15c4-1 7-1 10 2 3-3 6-3 10-2V4c-3-1-7-2-10 1Z"/>',
@@ -22,3 +16,11 @@ const paths = {
   cube:'<path d="m12 2 9 5v10l-9 5-9-5V7Zm0 10v10M3 7l9 5 9-5"/>'
 };
 export function icon(name){return `<svg class="icon" viewBox="0 0 24 24" aria-hidden="true">${paths[name] || paths.cube}</svg>`;}
+export const categoryStyles = {
+  Knowledge:{icon:'book',accent:'#2869b5',tint:'#eaf3fc'},
+  Materials:{icon:'database',accent:'#3e7c46',tint:'#edf6ed'},
+  Calculators:{icon:'calculator',accent:'#bd5b14',tint:'#fff1e6'},
+  Workflow:{icon:'checklist',accent:'#7750ba',tint:'#f1edfa'},
+  Standards:{icon:'document',accent:'#1767bc',tint:'#eaf3fc'},
+  'Project Data':{icon:'weight',accent:'#456078',tint:'#edf2f7'}
+};
