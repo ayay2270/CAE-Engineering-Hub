@@ -1,6 +1,6 @@
 import {icon,categoryStyles} from './icons.js';
 import {loadTools,renderCard} from './tools.js';
-import {getCategories,filterTools} from './filters.js';
+import {getCategories,filterTools} from './filters.js?v=three-categories';
 import {enableSearchShortcut} from './search.js';
 import {loadFavorites,toggleFavorite,FAVORITES_KEY} from './favorites.js';
 import {loadRecent,recordRecent,RECENT_KEY} from './recent.js';
