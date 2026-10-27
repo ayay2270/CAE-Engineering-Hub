@@ -115,3 +115,7 @@ Matches the user-selected reference: exactly three categories. Original hero, si
 | Utilities (1) | URL Shortcut Creator |
 
 Earlier versions remain in their corresponding category with their existing version names and tags. No separate version category is shown. The visualCategory field preserves each tool card's original color and icon.
+
+## Home card sections — 2026-10-27
+
+The Home view groups cards into CAE (5), Engineering Tools (6), and Utilities (1), in that order. Each section has a plain category title and matching count. Search and status/category filters show matching cards in nonempty sections. All Tools, Favorites, Recently Used and direct category views retain their previous layouts and ordering. Original hero, card images, colors, controls and responsive column breakpoints are retained.

@@ -20,7 +20,7 @@ export function validateTools(tools){
 }
 export function safeLink(value){try{return ['https:','http:'].includes(new URL(value).protocol);}catch{return false;}}
 function element(tag,className,text){const node=document.createElement(tag);if(className)node.className=className;if(text!==undefined)node.textContent=text;return node;}
-export function renderCard(tool,favorited){
+export function renderCard(tool,favorited,headingTag='h3'){
   const style=categoryStyles[tool.visualCategory||tool.category]||{icon:'cube',accent:'#2869b5',tint:'#eaf3fc'};
   const card=element('article','tool-card');card.dataset.toolId=tool.id;card.style.setProperty('--tool-accent',style.accent);card.style.setProperty('--tool-tint',style.tint);
   const preview=element('div','card-preview');
@@ -29,7 +29,7 @@ export function renderCard(tool,favorited){
   preview.append(img);
   const badge=element('span',`status-badge status-${tool.status==='Active'?'active':tool.status==='Preview'?'preview':'development'}`);
   badge.append(element('span','status-dot'),document.createTextNode(tool.status));preview.append(badge);
-  const content=element('div','card-content');const heading=element('div','card-heading');const toolIcon=element('span','tool-icon');toolIcon.innerHTML=icon(style.icon);heading.append(toolIcon,element('h3','',tool.name));
+  const content=element('div','card-content');const heading=element('div','card-heading');const toolIcon=element('span','tool-icon');toolIcon.innerHTML=icon(style.icon);heading.append(toolIcon,element(headingTag,'',tool.name));
   const tags=element('div','card-tags');tags.append(element('span','tag tag-category',tool.category));for(const tag of tool.tags)tags.append(element('span','tag',tag));
   const actions=element('div','card-actions');const open=element('a','open-tool');open.href=tool.url||`${tool.repo}#readme`;open.target='_blank';open.rel='noopener noreferrer';if(tool.url)open.dataset.openTool=tool.id;open.setAttribute('aria-label',`${tool.url?'Open':'Launch instructions for'} ${tool.name} in a new tab`);open.append(document.createTextNode(tool.url?'Open Tool':'Launch Instructions'),Object.assign(element('span'),{innerHTML:icon('arrow')}));
   const favorite=element('button','favorite-button');favorite.type='button';favorite.dataset.favorite=tool.id;favorite.setAttribute('aria-pressed',String(favorited));favorite.setAttribute('aria-label',`${favorited?'Remove':'Add'} ${tool.name} ${favorited?'from':'to'} favorites`);favorite.title=favorited?'Remove from favorites':'Add to favorites';favorite.innerHTML=icon('star');
