@@ -1,39 +1,35 @@
-# Local verification
+# Verification — 2026-10-27
 
-Verified on 2026-10-05 (Asia/Taipei). Static preview: http://127.0.0.1:4173/.
+## Repository inventory
 
-This report records the initial local build, before any later user-authorized Git commits or pushes.
+Connected GitHub listed 19 repositories owned by ayay2270. Excluded the six requested repositories and the Hub itself. All 12 remaining tools are in data/tools.json; each README and repository metadata was reviewed. See INVENTORY.md for purpose, source links and limitations.
 
-## Requested checks
+Public HTTP GET checks returned 200 for all 11 online tool entrances and the existing Hub. The checklist returned 404 and has_pages=false, consistent with its local-only README; it has no web launch URL in the catalog. These checks confirm page accessibility at that time, not authenticated content or all remote app functions.
 
-| Check | Result |
-| --- | --- |
-| Site runs locally | Passed; bound to 127.0.0.1 only |
-| All seven tools render from JSON | Passed; names, status labels, and category counts match the registry |
-| Search | Passed for name, description, category, tags, multi-word queries, and no-match feedback |
-| Category filter | Passed; Calculators returns two tools |
-| Status filter | Passed; Active returns four, Preview one, In Development two |
-| Combined filters | Passed; category, status, and search combine with the current view |
-| Favorites survive refresh | Passed by starring a tool, opening Favorites, and refreshing |
-| Recently Used survives refresh | Passed by launching two tools, refreshing, and checking history |
-| Recent ordering/deduplication | Passed; reopening an existing tool moves it to the front without duplication |
-| Eighth-tool extensibility | Passed; a temporary eighth JSON object rendered automatically with an image fallback, searchable tags, a new category, and a navigation count |
-| Eighth-tool cleanup | Passed; restored exact original tools.json bytes and verified seven tools again |
-| No HTML changes needed for tool eight | Passed; index.html SHA-256 remained D3C565CA3FD1F34B21FC3E63F1BF5CBCAADCFAD0493AF10ED7408F2CD405DCB6 during the registry test |
-| Desktop and mobile | Passed at 375×812, 812×375, 768×1024, 1280×800, 1440×1040, and 1920×1080; seven cards remain available and no horizontal document overflow |
-| Mobile navigation | Passed; menu expands/collapses, category selection works, collapsed links are inert, focus moves to the workspace after selecting a view |
-| Keyboard search | Passed; Ctrl+K focuses search and Escape clears the query |
-| All Tools | Passed; uses the same registry and omits the Home hero |
-| Empty personal views | Passed; useful empty messages for Favorites and Recently Used |
-| JavaScript syntax | Passed using node --check for every module |
-| Browser errors | None in final browser console check |
+## Automated checks
 
-Test Favorites and Recently Used entries were removed using a temporary visible cleanup page. That page was removed afterward. The final launcher starts with empty personal views.
+`node --test tests/catalog.test.mjs`: 5 passing tests cover complete catalog/exclusions, canonical URLs and local-tool behavior, exact repository/Chinese/multiple-keyword search, combined category/availability/personal filters, recent ordering, malformed entries and unsafe URL rejection.
 
-## Scope and limitations
+`node --check` passed for changed JavaScript modules. `git diff --check` passed.
 
-All project writes were confined to the new `outputs/CAE-Engineering-Hub` directory; intermediate verification scripts and logs are under this chat's `work` directory, and preview screenshots are under `outputs`. No existing CAE repository was edited. No Git initialization, commits, pushes, deployment, GitHub API calls, or remote repository changes were performed.
+## Browser checks
 
-Open Tool links use native anchors with target="_blank" and rel="noopener noreferrer". Browser launch checks recorded recent history and opened independent tool sites; the Material Library site was observed loading. A separate read-only HEAD check of all seven Pages addresses was blocked by the execution environment's outbound-network restriction. Full remote availability is therefore unverified. URLs use conventional repository-derived GitHub Pages paths; edit `url` in tools.json if an independent site has a custom or different address. This limitation does not affect the local launcher tests.
+Validated in the Codex in-app browser against the local HTTP preview:
 
-Engineering SVG previews are placeholders, not fabricated application screenshots. The hero is a generated technical illustration matching the user-selected concept. No repository content or application code was copied into the launcher.
+- Desktop 1440 × 1000: three-column cards, clear actions, sidebar and group headers.
+- Tablet 768 × 1024: two-column cards, no horizontal document overflow.
+- Mobile 390 × 844 and small mobile 320 × 740: one-column cards, wrapped navigation, no horizontal document overflow.
+- Chinese multi-keyword search returns only Center of Gravity Calculator.
+- Exact preview repository search opens its otherwise collapsed version section.
+- No-match query displays an empty state; Escape clears the search.
+- Favorites add and persist after reload; Favorites displays the saved tool.
+- Opening an online tool in its independent tab updates Recently Used; that view displays the tool.
+- Local-only filter shows the checklist and README instructions instead of broken Pages or unstarted localhost links.
+- Category navigation includes its preview entries and updates result counts.
+- No browser console warnings or errors were observed during these checks.
+
+Desktop and mobile screenshots were saved with the task outputs. Browser storage restrictions, cross-tab storage events, screen-reader software and all remote app workflows were not separately exercised. Existing storage keys and fallback handling are retained.
+
+## Deployment
+
+Uses existing GitHub Pages from main / root. Source remains buildless HTML/CSS/ES modules/JSON, with .nojekyll. All loaded assets use relative paths. No credentials, server integrations or runtime GitHub API access are required by the launcher.

@@ -1,35 +1,27 @@
-import {icon,categoryStyles} from './icons.js';
-export const statuses=['Active','Preview','In Development'];
-export async function loadTools(){
-  const response=await fetch('data/tools.json',{cache:'no-store'});
-  if(!response.ok)throw new Error('Unable to load data/tools.json.');
-  const tools=await response.json();
-  if(!Array.isArray(tools))throw new Error('tools.json must contain an array.');
+import {icon} from './icons.js';
+export function safeLink(value){try{return ['https:','http:'].includes(new URL(value).protocol);}catch{return false;}}
+export function validateTools(tools){
+  if(!Array.isArray(tools))throw new Error('工具目錄格式錯誤。');
   const ids=new Set();
   for(const tool of tools){
-    if(!tool||typeof tool.id!=='string'||!tool.id.trim()||ids.has(tool.id))throw new Error('Each tool needs a unique, nonempty id.');
+    if(!tool||typeof tool.id!=='string'||!tool.id.trim()||ids.has(tool.id))throw new Error('工具 ID 必須唯一。');
     ids.add(tool.id);
-    for(const field of ['name','category','description','url'])if(typeof tool[field]!=='string'||!tool[field].trim())throw new Error(`Tool ${tool.id} needs ${field}.`);
-    if(!statuses.includes(tool.status))throw new Error(`Unsupported status on ${tool.id}.`);
-    if(!Array.isArray(tool.tags)||tool.tags.some(tag=>typeof tag!=='string'))throw new Error(`Tool ${tool.id} needs a tags array of strings.`);
-    if(!safeLink(tool.url))throw new Error(`Tool ${tool.id} needs an HTTP or HTTPS URL.`);
+    for(const field of ['name','repository','category','description','status','note'])if(typeof tool[field]!=='string'||!tool[field].trim())throw new Error(`工具 ${tool.id} 缺少 ${field}。`);
+    if(!Array.isArray(tool.tags)||tool.tags.some(tag=>typeof tag!=='string'))throw new Error('工具標籤格式錯誤。');
+    if(!safeLink(tool.repo)||!(tool.url===null||safeLink(tool.url)))throw new Error('工具網址必須使用 HTTP 或 HTTPS。');
+    if(tool.url===null&&tool.status!=='本機工具')throw new Error('缺少線上工具網址。');
   }
   return tools;
 }
-function safeLink(value){try{return ['https:','http:'].includes(new URL(value).protocol);}catch{return false;}}
-function element(tag,className,text){const node=document.createElement(tag);if(className)node.className=className;if(text!==undefined)node.textContent=text;return node;}
+export async function loadTools(){const response=await fetch('data/tools.json',{cache:'no-store'});if(!response.ok)throw new Error('無法載入工具目錄。');return validateTools(await response.json());}
+export function element(tag,className,text){const node=document.createElement(tag);if(className)node.className=className;if(text!==undefined)node.textContent=text;return node;}
 export function renderCard(tool,favorited){
-  const style=categoryStyles[tool.category]||{icon:'cube',accent:'#2869b5',tint:'#eaf3fc'};
-  const card=element('article','tool-card');card.dataset.toolId=tool.id;card.style.setProperty('--tool-accent',style.accent);card.style.setProperty('--tool-tint',style.tint);
-  const preview=element('div','card-preview');
-  const img=element('img');img.alt='';img.loading='lazy';img.width=600;img.height=240;
-  img.src=tool.image||'assets/images/default.svg';img.addEventListener('error',()=>{if(!img.dataset.fallback){img.dataset.fallback='true';img.src='assets/images/default.svg';}});
-  preview.append(img);
-  const badge=element('span',`status-badge status-${tool.status==='Active'?'active':tool.status==='Preview'?'preview':'development'}`);
-  badge.append(element('span','status-dot'),document.createTextNode(tool.status));preview.append(badge);
-  const content=element('div','card-content');const heading=element('div','card-heading');const toolIcon=element('span','tool-icon');toolIcon.innerHTML=icon(style.icon);heading.append(toolIcon,element('h3','',tool.name));
-  const tags=element('div','card-tags');tags.append(element('span','tag tag-category',tool.category));for(const tag of tool.tags)tags.append(element('span','tag',tag));
-  const actions=element('div','card-actions');const open=element('a','open-tool');open.href=tool.url;open.target='_blank';open.rel='noopener noreferrer';open.dataset.openTool=tool.id;open.setAttribute('aria-label',`Open ${tool.name} in a new tab`);open.append(document.createTextNode('Open Tool'),Object.assign(element('span'),{innerHTML:icon('arrow')}));
-  const favorite=element('button','favorite-button');favorite.type='button';favorite.dataset.favorite=tool.id;favorite.setAttribute('aria-pressed',String(favorited));favorite.setAttribute('aria-label',`${favorited?'Remove':'Add'} ${tool.name} ${favorited?'from':'to'} favorites`);favorite.title=favorited?'Remove from favorites':'Add to favorites';favorite.innerHTML=icon('star');
-  actions.append(open,favorite);content.append(heading,tags,element('p','card-description',tool.description),actions);card.append(preview,content);return card;
+  const card=element('article','tool-card');card.dataset.toolId=tool.id;
+  const top=element('div','card-top');const glyph=element('span','tool-icon');glyph.innerHTML=icon(tool.icon);
+  const badge=element('span',`status-badge ${!tool.url?'status-local':tool.status==='預覽版'?'status-preview':''}`,tool.status);
+  const favorite=element('button','favorite-button');favorite.type='button';favorite.dataset.favorite=tool.id;favorite.setAttribute('aria-pressed',String(favorited));favorite.setAttribute('aria-label',`${favorited?'取消收藏':'收藏'} ${tool.name}`);favorite.innerHTML=icon('star');top.append(glyph,badge,favorite);
+  const tags=element('div','card-tags');tool.tags.forEach(tag=>tags.append(element('span','tag',tag)));
+  const actions=element('div','card-actions');const open=element('a','open-tool',tool.url?'開啟工具':'本機啟動說明');open.href=tool.url||`${tool.repo}#readme`;open.target='_blank';open.rel='noopener noreferrer';if(tool.url)open.dataset.openTool=tool.id;open.setAttribute('aria-label',`${tool.url?'開啟':'查看本機啟動說明：'} ${tool.name}（新分頁）`);const arrow=element('span');arrow.innerHTML=icon('external');open.append(arrow);
+  const repo=element('a','repo-link','Repository');repo.href=tool.repo;repo.target='_blank';repo.rel='noopener noreferrer';repo.setAttribute('aria-label',`${tool.repository} 原始碼（新分頁）`);actions.append(open,repo);
+  card.append(top,element('h3','',tool.name),element('p','card-description',tool.description),tags,element('p','card-note',tool.note),actions);return card;
 }

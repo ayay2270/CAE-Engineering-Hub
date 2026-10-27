@@ -1,99 +1,48 @@
 # CAE Engineering Hub
 
-A lightweight local launcher for independent CAE tools. Plain HTML, CSS, JavaScript modules, and JSON; no framework, packages, build step, or application backend.
+[開啟 HOME](https://ayay2270.github.io/CAE-Engineering-Hub/) · [完整工具盤點](INVENTORY.md)
 
-## Quick links
+乾淨的工程工具入口，沿用既有 repo 與 GitHub Pages。白底、單一藍色、細線結構；桌機側欄與三欄卡片，平板兩欄、手機單欄。
 
-- [Open CAE Engineering Hub](https://ayay2270.github.io/CAE-Engineering-Hub/) — the hosted launcher on GitHub Pages.
-- [Open the local preview](http://127.0.0.1:4173/) — available on the computer running the local preview server below.
-- [View the GitHub repository](https://github.com/ayay2270/CAE-Engineering-Hub)
+## 資訊架構
 
-The hosted Hub is a static website published from the `main` branch. Each tool opens its own independent site in a new tab.
+- HOME / 全部工具
+- CAE：材料庫、知識庫、Pre-run Checklist、結果比較
+- Engineering Tools：Shock V2、重心 / 翻覆計算、測試標準、Weight V2
+- Utilities：Windows URL 捷徑產生器
+- 舊版與預覽：材料庫預覽、Shock V1、Weight V1（HOME 預設收合；搜尋或篩選時自動展開）
+- 我的收藏 / 最近使用
 
-## Local preview
+12 個工具 repo 全數納入（11 個線上、1 個本機），排除使用者指定 6 個 repo，首頁自身不列為工具。分類計數包含該分類的舊版 / 預覽。
 
-Serve this directory over HTTP because the tool collection is loaded with `fetch()` and the JavaScript uses modules. With Python installed:
+搜尋支援中文用途、顯示名稱、完整 repo 名稱與標籤；多個關鍵字全部匹配。Ctrl/Cmd+K 聚焦搜尋，Escape 清除搜尋。收藏與最近使用保留原本的 localStorage keys；不讀取其他工具資料，不使用追蹤或登入。
+
+## 預覽與檢查
 
 ```powershell
-cd "path\to\CAE-Engineering-Hub"
 python -m http.server 4173 --bind 127.0.0.1
 ```
 
-Open [http://127.0.0.1:4173/](http://127.0.0.1:4173/). Stop the static preview server with Ctrl+C. Opening `index.html` directly with `file://` is not supported.
+開啟 http://127.0.0.1:4173/ 。ES modules 與 JSON fetch 需要 HTTP，請勿直接使用 file://。
 
-## Add or edit a tool
-
-`data/tools.json` is the only tool registry. It is an array of objects:
-
-```json
-{
-  "id": "new-tool",
-  "name": "New Engineering Tool",
-  "shortName": "New Tool",
-  "category": "Calculators",
-  "status": "Preview",
-  "description": "A brief, accurate description of what this tool does.",
-  "tags": ["Geometry"],
-  "url": "https://example.com/tool/",
-  "repo": "https://github.com/example/tool",
-  "image": "assets/images/default.svg",
-  "featured": false
-}
+```powershell
+node --test tests/catalog.test.mjs
 ```
 
-Use a unique stable `id`. Required fields are `id`, `name`, `category`, `status`, `description`, `tags`, and a valid HTTP/HTTPS `url`. Only **Active**, **Preview**, and **In Development** are accepted. Use a JSON array of strings for `tags`.
+不需要 npm 套件或 build。現有 css/base.css、css/layout.css、css/components.css、css/responsive.css 與舊示意圖片仍保留於歷史資產；新版只載入 css/hub.css，不使用 hero 圖片或示意縮圖。
 
-Add the object and refresh: the card, count, filters, and navigation counts update automatically. Additional category names also appear automatically, with a generic icon until optionally given a style in `js/icons.js`. The six original category entries remain available when empty. Cards have no hardcoded limit and scale naturally to 15–25 tools.
+## 部署
 
-`shortName`, `repo`, and `featured` are reserved optional metadata; this version displays the full name and preserves JSON order without a featured-only section. The launcher never reads repository contents or retrieves repository metadata.
+既有 GitHub Pages 從 **main / root** 發佈。新版延用此來源；將已驗證內容推送到 main 後，由 GitHub 的 `pages build and deployment` 自動發佈。網址：
 
-Change `image` to a local asset path or an image URL to replace a preview. Missing or empty images use a neutral engineering illustration. The included SVG previews are illustrative placeholders, not application screenshots. The blue mesh-bracket hero was created with the built-in ImageGen tool from the selected concept reference; prompt: "A blue mounting bracket with a fine finite element mesh overlay on pale engineering blueprints, large bracket at right, light empty space at left, deep navy at far right; no text or UI." The asset is `assets/images/hero.png`.
+https://ayay2270.github.io/CAE-Engineering-Hub/
 
-## Navigation and local behavior
+若需重新設定：Repository → Settings → Pages → Deploy from a branch → main → / (root)。所有前端資產使用相對路徑，適用 repo 子路徑與一般靜態主機。`.nojekyll` 讓純靜態檔案直接發佈。
 
-- Home: engineering hero and complete tool collection.
-- All Tools: efficient card collection without the hero.
-- Categories: filter tools by category; additional categories come from JSON.
-- Favorites: star tools; stored in this browser under `cae-engineering-hub:favorites:v1`.
-- Recently Used: records tool-link clicks, including middle-clicks; keeps the last 12 distinct tools, newest first, under `cae-engineering-hub:recent:v1`.
-- Search: instant, case-insensitive matching across name, description, category, and tags. Multiple search words must all match. Ctrl/Cmd+K focuses search; Escape clears it.
-- Category and status filters combine with search and the current personal view. Reset filters clears search/category/status while retaining Favorites or Recently Used. Navigation to another view resets filters.
+## 維護工具目錄
 
-Favorites and history persist across refreshes for the same browser and origin. Changing the preview port creates a different origin and a separate local history. There is no account, tracking, synchronization, or storage outside the browser. If storage is blocked, session-only state still works and a notice explains the limitation. Favorites and recent history update between same-origin tabs.
+只需更新 `data/tools.json`。每筆包含穩定 id、name、repository、category、icon、description、tags、status、note、variant、url、repo、checkedOn、httpStatus、hasPages。`variant: true` 放入舊版 / 預覽區；`url: null` 且 status 為「本機工具」時，主要按鈕導向 README 啟動說明。線上網址與 repo 必須為 HTTP(S)。
 
-Tool URLs open independent sites in a new tab with `noopener noreferrer`; nothing is embedded. Recently Used records the launch action, not whether a remote application loaded successfully. Browser context-menu “Open in new tab” does not dispatch a normal click and is not recorded.
+`INVENTORY.md` 是完整盤點來源；`checkedOn` / `httpStatus` 為手動檢查快照，不是 uptime 監控。更新目錄時也更新頁尾檢查日期。公開頁面可開啟不等於私人資料免登入；卡片會標示知識庫 owner 登入與材料庫編輯權限。
 
-## Site URLs and future work
-
-The initial `url` fields use the conventional GitHub Pages address derived from the supplied repository names. They are editable configuration, independent of the `repo` field. A repository can be public while its Pages site is unavailable or uses a different/custom address. Confirm those addresses as needed; this launcher does not publish, enable, or monitor remote sites. Status values are the user-provided labels, not fetched availability information. In-development tools retain their configured launch links.
-
-Future work is intentionally limited to replacing illustrative previews with real screenshots, confirming/changing independent site URLs, and adding tools to JSON. Repository integration, cross-tool content search, backend services, authentication, and GitHub automation are outside this shell's scope.
-
-## Structure
-
-```text
-CAE-Engineering-Hub/
-├── index.html
-├── README.md
-├── VERIFICATION.md
-├── data/tools.json
-├── assets/
-│   ├── icons/hub.svg
-│   └── images/  (hero.png, seven SVG previews, default.svg)
-├── css/
-│   ├── base.css
-│   ├── layout.css
-│   ├── components.css
-│   └── responsive.css
-└── js/
-    ├── app.js
-    ├── tools.js
-    ├── icons.js
-    ├── search.js
-    ├── filters.js
-    ├── storage.js
-    ├── favorites.js
-    └── recent.js
-```
-
-No existing CAE repository is included, imported, or modified. Each application remains independent; the launcher contains no GitHub automation or repository synchronization.
+收藏記錄工具 id；最近使用只記錄線上工具的啟動連結 click / middle-click，不代表遠端頁面已成功載入；右鍵開新分頁不記錄。儲存空間受限時退回工作階段記憶體並顯示說明。工具均以新分頁及 noopener noreferrer 開啟。
