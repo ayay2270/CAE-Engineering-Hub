@@ -24,3 +24,13 @@ export const categoryStyles = {
   Standards:{icon:'document',accent:'#1767bc',tint:'#eaf3fc'},
   'Project Data':{icon:'weight',accent:'#456078',tint:'#edf2f7'}
 };
+
+// Navigation categories share the existing visual palette. Tool cards keep their original visualCategory.
+Object.assign(categoryStyles,{
+  'CAE 分析與知識':{icon:'cube',accent:'#2869b5',tint:'#eaf3fc'},
+  '工程計算':categoryStyles.Calculators,
+  '測試標準':categoryStyles.Standards,
+  '工程資料':categoryStyles['Project Data'],
+  '日常工具':{icon:'grid',accent:'#456078',tint:'#edf2f7'},
+  '舊版與預覽':{icon:'clock',accent:'#7750ba',tint:'#f1edfa'}
+});

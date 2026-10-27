@@ -21,7 +21,7 @@ export function validateTools(tools){
 export function safeLink(value){try{return ['https:','http:'].includes(new URL(value).protocol);}catch{return false;}}
 function element(tag,className,text){const node=document.createElement(tag);if(className)node.className=className;if(text!==undefined)node.textContent=text;return node;}
 export function renderCard(tool,favorited){
-  const style=categoryStyles[tool.category]||{icon:'cube',accent:'#2869b5',tint:'#eaf3fc'};
+  const style=categoryStyles[tool.visualCategory||tool.category]||{icon:'cube',accent:'#2869b5',tint:'#eaf3fc'};
   const card=element('article','tool-card');card.dataset.toolId=tool.id;card.style.setProperty('--tool-accent',style.accent);card.style.setProperty('--tool-tint',style.tint);
   const preview=element('div','card-preview');
   const img=element('img');img.alt='';img.loading='lazy';img.width=600;img.height=240;

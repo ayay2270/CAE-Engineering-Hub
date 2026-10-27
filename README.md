@@ -103,3 +103,18 @@ No existing CAE repository is included, imported, or modified. Each application 
 The original blue CAE hero, illustrated tool previews, sidebar navigation and card layout have been restored from commit 7432ade. The original four CSS files and hero/preview images are unchanged. The verified 12-tool inventory is retained with corrected URLs. Local checklist cards link to README instructions and use the Local status.
 
 The four new design proposals are independent at [designs/](designs/), with their own catalog and shared modules. Their presence does not change the production Home. New visual proposals should remain separate previews until the user selects one for the production Home.
+
+## Tool navigation categories — 2026-10-27
+
+The existing interface, hero, images and card arrangement are retained. Category navigation and the category selector now use:
+
+| Category | Tools |
+|---|---|
+| CAE 分析與知識 | Material Library, Knowledge Base, Pre-run Checklist, Simulation Result Comparator |
+| 工程計算 | Shock Pulse V2, Center of Gravity Calculator |
+| 測試標準 | Test Standard Finder V2 |
+| 工程資料 | Weight Data Manager V2 |
+| 日常工具 | URL Shortcut Creator |
+| 舊版與預覽 | Material Library Preview, Shock Pulse V1, Weight Data Manager V1 |
+
+All 12 entries remain accessible. The optional visualCategory field retains the original card colors and category icons while category controls tool navigation.
