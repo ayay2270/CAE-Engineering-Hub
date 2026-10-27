@@ -1,5 +1,5 @@
-import {icon,categoryStyles} from './icons.js';
-import {loadTools,renderCard} from './tools.js';
+import {icon,categoryStyles} from './icons.js?v=three-categories';
+import {loadTools,renderCard} from './tools.js?v=three-categories';
 import {getCategories,filterTools} from './filters.js?v=three-categories';
 import {enableSearchShortcut} from './search.js';
 import {loadFavorites,toggleFavorite,FAVORITES_KEY} from './favorites.js';

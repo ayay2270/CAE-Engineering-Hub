@@ -1,4 +1,4 @@
-import {icon,categoryStyles} from './icons.js';
+import {icon,categoryStyles} from './icons.js?v=three-categories';
 export const statuses=['Active','Preview','In Development','Local'];
 export async function loadTools(){
   const response=await fetch('data/tools.json',{cache:'no-store'});
