@@ -106,15 +106,12 @@ The four new design proposals are independent at [designs/](designs/), with thei
 
 ## Tool navigation categories — 2026-10-27
 
-The existing interface, hero, images and card arrangement are retained. Category navigation and the category selector now use:
+Matches the user-selected reference: exactly three categories. Original hero, sidebar styling, tool card images and card colors are retained.
 
 | Category | Tools |
 |---|---|
-| CAE 分析與知識 | Material Library, Knowledge Base, Pre-run Checklist, Simulation Result Comparator |
-| 工程計算 | Shock Pulse V2, Center of Gravity Calculator |
-| 測試標準 | Test Standard Finder V2 |
-| 工程資料 | Weight Data Manager V2 |
-| 日常工具 | URL Shortcut Creator |
-| 舊版與預覽 | Material Library Preview, Shock Pulse V1, Weight Data Manager V1 |
+| CAE (5) | Material Library, Knowledge Base, Pre-run Checklist, Simulation Result Comparator, Material Library Preview |
+| Engineering Tools (6) | Shock Pulse V2 / V1, Center of Gravity Calculator, Test Standard Finder V2, Weight Data Manager V2 / V1 |
+| Utilities (1) | URL Shortcut Creator |
 
-All 12 entries remain accessible. The optional visualCategory field retains the original card colors and category icons while category controls tool navigation.
+Earlier versions remain in their corresponding category with their existing version names and tags. No separate version category is shown. The visualCategory field preserves each tool card's original color and icon.

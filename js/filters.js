@@ -1,5 +1,5 @@
 import {matchesSearch} from './search.js';
-export const baseCategories=["CAE 分析與知識", "工程計算", "測試標準", "工程資料", "日常工具", "舊版與預覽"];
+export const baseCategories=['CAE','Engineering Tools','Utilities'];
 export function getCategories(tools){return [...new Set([...baseCategories,...tools.map(tool=>tool.category)])];}
 export function filterTools(tools,state){
   let result=tools.filter(tool=>(!state.category||tool.category===state.category)&&(!state.status||tool.status===state.status)&&matchesSearch(tool,state.query));

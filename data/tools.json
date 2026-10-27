@@ -3,7 +3,7 @@
     "id": "material-library",
     "name": "CAE Material Library",
     "repository": "CAE-Material-Library",
-    "category": "CAE 分析與知識",
+    "category": "CAE",
     "icon": "database",
     "description": "材料搜尋、性質比較與曲線檢視，支援 H / ETAN 換算及 Density Tuner。",
     "tags": [
@@ -26,7 +26,7 @@
     "id": "knowledge-base",
     "name": "CAE Knowledge Base",
     "repository": "CAE-Knowledge-Base",
-    "category": "CAE 分析與知識",
+    "category": "CAE",
     "icon": "book",
     "description": "整理 CAE 技術知識、問題排除紀錄與工程圖片，集中查找分析參考資料。",
     "tags": [
@@ -48,7 +48,7 @@
     "id": "pre-run-checklist",
     "name": "CAE Pre-run Checklist",
     "repository": "cae-pre-run-checklist",
-    "category": "CAE 分析與知識",
+    "category": "CAE",
     "icon": "checklist",
     "description": "分析前逐項確認 Sagging / Shock 設定，記錄備註與 Critical 項目。 先下載 repo 並執行 Start.cmd；紀錄保存在本機瀏覽器。",
     "tags": [
@@ -71,7 +71,7 @@
     "id": "result-comparator",
     "name": "Simulation Result Comparator",
     "repository": "CAE-Simulation-Result-Comparator",
-    "category": "CAE 分析與知識",
+    "category": "CAE",
     "icon": "chart",
     "description": "並排比較基準與設計方案，檢視相對改善及工程參考值，列印比較報告。",
     "tags": [
@@ -90,10 +90,32 @@
     "visualCategory": "Workflow"
   },
   {
+    "id": "material-preview",
+    "name": "CAE Material Library Preview",
+    "repository": "CAE-Material-Library-V2-Preview",
+    "category": "CAE",
+    "icon": "database",
+    "description": "材料庫的獨立預覽版本，以 Git JSON 與使用者授權的本機 materials.json 為資料來源。",
+    "tags": [
+      "Materials",
+      "Local JSON"
+    ],
+    "status": "Preview",
+    "note": "日常正式材料庫請使用上方正式版。",
+    "variant": true,
+    "url": "https://ayay2270.github.io/CAE-Material-Library-V2-Preview/",
+    "repo": "https://github.com/ayay2270/CAE-Material-Library-V2-Preview",
+    "checkedOn": "2026-10-27",
+    "httpStatus": 200,
+    "hasPages": true,
+    "image": "assets/images/materials.svg",
+    "visualCategory": "Materials"
+  },
+  {
     "id": "shock-pulse",
     "name": "Shock Pulse Workbench",
     "repository": "Shock-Pulse-Initial-Velocity-Calculator-V2",
-    "category": "工程計算",
+    "category": "Engineering Tools",
     "icon": "pulse",
     "description": "將半正弦或矩形衝擊脈衝換算為估計初速度，匯出 CSV 與 LS-DYNA 曲線。",
     "tags": [
@@ -115,7 +137,7 @@
     "id": "center-of-gravity",
     "name": "Center of Gravity Calculator",
     "repository": "Center-of-Gravity-Calculator",
-    "category": "工程計算",
+    "category": "Engineering Tools",
     "icon": "gravity",
     "description": "評估機櫃與棧板的 2D 重心、臨界傾角與靜態翻覆穩定性。",
     "tags": [
@@ -137,7 +159,7 @@
     "id": "standard-finder",
     "name": "Test Standard Finder",
     "repository": "Engineering-Test-Standard-Finder-V2",
-    "category": "測試標準",
+    "category": "Engineering Tools",
     "icon": "document",
     "description": "查找 ISTA、ASTM、IEC 與 ISO 測試標準，整理測試序列與本機資料庫。",
     "tags": [
@@ -159,7 +181,7 @@
     "id": "weight-manager",
     "name": "Weight Data Manager",
     "repository": "Weight-Data-Manager-V2",
-    "category": "工程資料",
+    "category": "Engineering Tools",
     "icon": "weight",
     "description": "依專案收集 Part / Node / Rack / Package 重量，完成量測、審核與 Excel 匯入匯出。",
     "tags": [
@@ -178,54 +200,10 @@
     "visualCategory": "Project Data"
   },
   {
-    "id": "url-shortcut",
-    "name": "URL Shortcut Creator",
-    "repository": "URL-Shortcut-Creator",
-    "category": "日常工具",
-    "icon": "link",
-    "description": "將常用網址製作成 Windows .url 捷徑檔，方便放在桌面或共用資料夾。",
-    "tags": [
-      "Windows",
-      ".url"
-    ],
-    "status": "Active",
-    "note": "在瀏覽器產生捷徑檔。",
-    "variant": false,
-    "url": "https://ayay2270.github.io/URL-Shortcut-Creator/",
-    "repo": "https://github.com/ayay2270/URL-Shortcut-Creator",
-    "checkedOn": "2026-10-27",
-    "httpStatus": 200,
-    "hasPages": true,
-    "image": "assets/images/default.svg",
-    "visualCategory": "Utilities"
-  },
-  {
-    "id": "material-preview",
-    "name": "CAE Material Library Preview",
-    "repository": "CAE-Material-Library-V2-Preview",
-    "category": "舊版與預覽",
-    "icon": "database",
-    "description": "材料庫的獨立預覽版本，以 Git JSON 與使用者授權的本機 materials.json 為資料來源。",
-    "tags": [
-      "Materials",
-      "Local JSON"
-    ],
-    "status": "Preview",
-    "note": "日常正式材料庫請使用上方正式版。",
-    "variant": true,
-    "url": "https://ayay2270.github.io/CAE-Material-Library-V2-Preview/",
-    "repo": "https://github.com/ayay2270/CAE-Material-Library-V2-Preview",
-    "checkedOn": "2026-10-27",
-    "httpStatus": 200,
-    "hasPages": true,
-    "image": "assets/images/materials.svg",
-    "visualCategory": "Materials"
-  },
-  {
     "id": "shock-pulse-v1",
     "name": "Shock Pulse Calculator V1",
     "repository": "Shock-Pulse-Initial-Velocity-Calculator",
-    "category": "舊版與預覽",
+    "category": "Engineering Tools",
     "icon": "pulse",
     "description": "原版衝擊脈衝與初速度計算介面，保留方向選擇、曲線表格與匯出功能。",
     "tags": [
@@ -248,7 +226,7 @@
     "id": "weight-manager-v1",
     "name": "Weight Data Manager V1",
     "repository": "Weight-Data-Manager",
-    "category": "舊版與預覽",
+    "category": "Engineering Tools",
     "icon": "weight",
     "description": "原版 Dashboard 與重量資料表，提供量測送審、工程審核及資料匯入匯出。",
     "tags": [
@@ -266,5 +244,27 @@
     "hasPages": true,
     "image": "assets/images/weight.svg",
     "visualCategory": "Project Data"
+  },
+  {
+    "id": "url-shortcut",
+    "name": "URL Shortcut Creator",
+    "repository": "URL-Shortcut-Creator",
+    "category": "Utilities",
+    "icon": "link",
+    "description": "將常用網址製作成 Windows .url 捷徑檔，方便放在桌面或共用資料夾。",
+    "tags": [
+      "Windows",
+      ".url"
+    ],
+    "status": "Active",
+    "note": "在瀏覽器產生捷徑檔。",
+    "variant": false,
+    "url": "https://ayay2270.github.io/URL-Shortcut-Creator/",
+    "repo": "https://github.com/ayay2270/URL-Shortcut-Creator",
+    "checkedOn": "2026-10-27",
+    "httpStatus": 200,
+    "hasPages": true,
+    "image": "assets/images/default.svg",
+    "visualCategory": "Utilities"
   }
 ]

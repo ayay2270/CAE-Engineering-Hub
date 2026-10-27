@@ -21,7 +21,7 @@ test('corrected URLs and local checklist survive UI restoration',()=>{
 test('search and original category/status filters work',()=>{
  assert.equal(filterTools(tools,{...state,query:'棧板 重心'})[0].id,'center-of-gravity');
  assert.equal(filterTools(tools,{...state,query:'Shock-Pulse-Initial-Velocity-Calculator-V2'})[0].id,'shock-pulse');
- assert.equal(filterTools(tools,{...state,category:'CAE 分析與知識'}).length,4);
+ assert.equal(filterTools(tools,{...state,category:'CAE'}).length,5);
  assert.equal(filterTools(tools,{...state,status:'Local'}).length,1);
 });
 test('unsafe URLs and malformed catalog are rejected',()=>{
@@ -30,9 +30,8 @@ test('unsafe URLs and malformed catalog are rejected',()=>{
  assert.throws(()=>validateTools([{...tools[0],url:null}]));
 });
 
-test('six navigation groups separate daily tools from earlier versions',()=>{
- const expected={'CAE 分析與知識':4,'工程計算':2,'測試標準':1,'工程資料':1,'日常工具':1,'舊版與預覽':3};
+test('three categories match the selected reference',()=>{
+ const expected={'CAE':5,'Engineering Tools':6,'Utilities':1};
+ assert.deepEqual([...new Set(tools.map(t=>t.category))],Object.keys(expected));
  for(const [category,count] of Object.entries(expected))assert.equal(filterTools(tools,{...state,category}).length,count);
- assert.ok(tools.filter(t=>t.variant).every(t=>t.category==='舊版與預覽'));
- assert.ok(tools.filter(t=>!t.variant).every(t=>t.category!=='舊版與預覽'));
 });

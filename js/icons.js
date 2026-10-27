@@ -1,4 +1,5 @@
 const paths = {
+  link:'<path d="m10 13 4-4M8 16l-2 2a4 4 0 0 1-6-6l5-5a4 4 0 0 1 6 0m2 1 2-2a4 4 0 0 1 6 6l-5 5a4 4 0 0 1-6 0" transform="translate(2 0)"/>',
   home:'<path d="m3 10 9-7 9 7v10H15v-7H9v7H3Z"/>',
   grid:'<rect x="3" y="3" width="6" height="6" rx="1"/><rect x="15" y="3" width="6" height="6" rx="1"/><rect x="3" y="15" width="6" height="6" rx="1"/><rect x="15" y="15" width="6" height="6" rx="1"/>',
   book:'<path d="M12 5v16M12 5C9 2 5 3 2 4v15c4-1 7-1 10 2 3-3 6-3 10-2V4c-3-1-7-2-10 1Z"/>',
@@ -25,12 +26,8 @@ export const categoryStyles = {
   'Project Data':{icon:'weight',accent:'#456078',tint:'#edf2f7'}
 };
 
-// Navigation categories share the existing visual palette. Tool cards keep their original visualCategory.
 Object.assign(categoryStyles,{
-  'CAE 分析與知識':{icon:'cube',accent:'#2869b5',tint:'#eaf3fc'},
-  '工程計算':categoryStyles.Calculators,
-  '測試標準':categoryStyles.Standards,
-  '工程資料':categoryStyles['Project Data'],
-  '日常工具':{icon:'grid',accent:'#456078',tint:'#edf2f7'},
-  '舊版與預覽':{icon:'clock',accent:'#7750ba',tint:'#f1edfa'}
+  CAE:{icon:'cube',accent:'#2869b5',tint:'#eaf3fc'},
+  'Engineering Tools':{icon:'calculator',accent:'#456078',tint:'#edf2f7'},
+  Utilities:{icon:'link',accent:'#456078',tint:'#edf2f7'}
 });
